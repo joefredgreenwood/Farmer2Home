@@ -3,6 +3,14 @@ package com.mastek.farmToShop.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Farm {
 	
 	
@@ -17,7 +25,8 @@ public class Farm {
 	String farmUsername;
 	String farmPassword;
 
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getFarmID() {
 		return farmID;
 	}
@@ -60,7 +69,7 @@ public class Farm {
 	
 	
 	////////////////////////////////////////////////Foreign Keys//////////////////////////////////////////
-	Set<Product> farmProduce = new HashSet<Product>(); //Many to many
+	/*Set<Product> farmProduce = new HashSet<Product>(); //Many to many
 	
 		
 	public Set<Product> getFarmProduce() {
@@ -69,7 +78,7 @@ public class Farm {
 	public void setFarmProduce(Set<Product> farmProduce) {
 		this.farmProduce = farmProduce;
 	}
-	
+	*/
 	
 	
 	

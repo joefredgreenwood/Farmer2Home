@@ -1,6 +1,10 @@
 package com.mastek.farmToShop.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -14,9 +18,10 @@ public class Product {
 	int productID;
 	String productName;
 	int productQuantity;
-	float productPrice;
+	double productPrice;
 	
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getProductID() {
 		return productID;
 	}
@@ -35,12 +40,18 @@ public class Product {
 	public void setProductQuantity(int productQuantity) {
 		this.productQuantity = productQuantity;
 	}
-	public float getProductPrice() {
+	public double getProductPrice() {
 		return productPrice;
 	}
-	public void setProductPrice(float productPrice) {
+	public void setProductPrice(double productPrice) {
 		this.productPrice = productPrice;
 	}
+	
+	
+	
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
