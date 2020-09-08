@@ -4,8 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
@@ -16,10 +20,17 @@ public class Product {
 		// TODO Auto-generated constructor stub
 	}
 	
-	int productID;
-	String productName;
-	int productQuantity;
-	float productPrice;
+	@FormParam("product_id")
+	public int productID;
+	
+	@FormParam("product_name")
+	public String productName;
+	
+	@FormParam("product_quantity")
+	public int productQuantity;
+	
+	@FormParam("product_price")
+	public float productPrice;
 	
 	
 	/*	Set<Farm> farmProduct = new HashSet<Farm>();                     
@@ -35,7 +46,8 @@ public void setFarmProduct(Set<Farm> farmProduct) {
 */
 	
 	
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getProductID() {
 		return productID;
 	}
