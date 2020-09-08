@@ -1,7 +1,12 @@
 package com.mastek.farmToShop.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table
@@ -15,6 +20,20 @@ public class Product {
 	String productName;
 	int productQuantity;
 	float productPrice;
+	
+	
+	/*	Set<Farm> farmProduct = new HashSet<Farm>();                     
+	
+	@ManyToMany (mappedBy="farmProduce")
+	@XmlTransient
+public Set<Farm> getFarmProduct() {
+	return farmProduct;
+}
+public void setFarmProduct(Set<Farm> farmProduct) {
+	this.farmProduct = farmProduct;										
+}																	
+*/
+	
 	
 	
 	public int getProductID() {
