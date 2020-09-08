@@ -1,10 +1,13 @@
 package com.mastek.farmToShop.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="Transaction_DAO")
 public class Transaction {
 	
 	public Transaction() {
@@ -16,7 +19,8 @@ public class Transaction {
 	String transactionData;
 	float transactionValue;
 	
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getTransactionID() {
 		return transactionID;
 	}
@@ -35,6 +39,8 @@ public class Transaction {
 	public void setTransactionValue(float transactionValue) {
 		this.transactionValue = transactionValue;
 	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

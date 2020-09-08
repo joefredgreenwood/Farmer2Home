@@ -1,7 +1,12 @@
 package com.mastek.farmToShop.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GeneratorType;
 
 @Entity
 @Table
@@ -15,6 +20,8 @@ public class AssignedProduct {
 	int assignedProductID;
 	int productQuantity;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getAssignedProductID() {
 		return assignedProductID;
 	}
@@ -31,7 +38,7 @@ public class AssignedProduct {
 	
 	
 	///////////////////////////////Foreign Keys////////////////////////////////////
-	Basket currentBasket;
+/*	Basket currentBasket;
 	Product currentProduct;
 	
 	
@@ -46,7 +53,7 @@ public class AssignedProduct {
 	}
 	public void setCurrentProduct(Product currentProduct) {
 		this.currentProduct = currentProduct;
-	}
+	}*/
 	@Override
 	public String toString() {
 		return "AssignedProducts [assignedProductID=" + assignedProductID + ", productQuantity=" + productQuantity

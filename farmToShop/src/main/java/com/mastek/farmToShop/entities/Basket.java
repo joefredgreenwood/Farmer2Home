@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +20,8 @@ public class Basket {
 	int basketID;
 	float basketValue;
 	
-
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getBasketID() {
 		return basketID;
 	}
@@ -37,15 +41,15 @@ public class Basket {
 	
 	/////////////////////////////////////////Foreign Keys/////////////////////////////////////////
 	
-Set<Customer> customersBasket = new HashSet<Customer>();	
-	
-	public Set<Customer> getCustomersBasket() {
-	return customersBasket;
-}
-public void setCustomersBasket(Set<Customer> customersBasket) {
-	this.customersBasket = customersBasket;
-}
-	
+//Set<Customer> customersBasket = new HashSet<Customer>();	
+//	
+//	public Set<Customer> getCustomersBasket() {
+//	return customersBasket;
+//}
+//public void setCustomersBasket(Set<Customer> customersBasket) {
+//	this.customersBasket = customersBasket;
+//}
+//	
 
 
 
