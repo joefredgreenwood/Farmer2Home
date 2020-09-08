@@ -3,12 +3,18 @@ package com.mastek.farmToShop.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class Customer {
 	
 	public Customer() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int customerID;
 	String customerForename;
 	String customerSurname;

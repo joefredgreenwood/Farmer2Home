@@ -1,6 +1,9 @@
 package com.mastek.farmToShop.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -11,7 +14,8 @@ public class Transaction {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int transactionID;	
 	String transactionData;
 	float transactionValue;
