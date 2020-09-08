@@ -1,11 +1,17 @@
 package com.mastek.farmToShop.entities;
 
+
 import javax.persistence.Column;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table
@@ -20,6 +26,21 @@ public class Product {
 	int productQuantity;
 	double productPrice;
 	
+
+	
+
+	
+	/*	Set<Farm> farmProduct = new HashSet<Farm>();                     
+	
+	@ManyToMany (mappedBy="farmProduce")
+	@XmlTransient
+public Set<Farm> getFarmProduct() {
+	return farmProduct;
+}
+public void setFarmProduct(Set<Farm> farmProduct) {
+	this.farmProduct = farmProduct;										
+}																	
+*/
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getProductID() {
