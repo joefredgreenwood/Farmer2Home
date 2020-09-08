@@ -1,13 +1,15 @@
 package com.mastek.farmToShop.entities;
 
+
+import javax.persistence.Column;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlTransient;
@@ -21,17 +23,18 @@ public class Product {
 	}
 	
 	@FormParam("product_id")
-	public int productID;
+	int productID;
 	
 	@FormParam("product_name")
-	public String productName;
+	String productName;
 	
 	@FormParam("product_quantity")
-	public int productQuantity;
+	int productQuantity;
 	
 	@FormParam("product_price")
-	public float productPrice;
+	double productPrice;
 	
+
 	
 	/*	Set<Farm> farmProduct = new HashSet<Farm>();                     
 	
@@ -44,10 +47,8 @@ public void setFarmProduct(Set<Farm> farmProduct) {
 	this.farmProduct = farmProduct;										
 }																	
 */
-	
-	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getProductID() {
 		return productID;
 	}
@@ -66,12 +67,18 @@ public void setFarmProduct(Set<Farm> farmProduct) {
 	public void setProductQuantity(int productQuantity) {
 		this.productQuantity = productQuantity;
 	}
-	public float getProductPrice() {
+	public double getProductPrice() {
 		return productPrice;
 	}
-	public void setProductPrice(float productPrice) {
+	public void setProductPrice(double productPrice) {
 		this.productPrice = productPrice;
 	}
+	
+	
+	
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

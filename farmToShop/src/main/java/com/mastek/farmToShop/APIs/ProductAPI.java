@@ -40,7 +40,7 @@ public class ProductAPI {
 	public @ResponseBody String createItem(
 			@RequestParam String productName,
 			@RequestParam int productQuantity,
-			@RequestParam float productPrice)
+			@RequestParam double productPrice)
 
 	{
 		Product p = new Product();
