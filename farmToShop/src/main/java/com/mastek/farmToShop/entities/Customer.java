@@ -3,9 +3,9 @@ package com.mastek.farmToShop.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Customers {
+public class Customer {
 	
-	public Customers() {
+	public Customer() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -81,14 +81,14 @@ public class Customers {
 	
 	
 	////////////////////////////////////////////Foreign Keys//////////////////////////////////////////////////////
-	Set<Baskets> customersBaskets = new HashSet<Baskets>();	
+	Set<Basket> customersBaskets = new HashSet<Basket>();	
 	
 	
 	
-	public Set<Baskets> getCustomersBaskets() {
+	public Set<Basket> getCustomersBaskets() {
 		return customersBaskets;
 	}
-	public void setCustomersBaskets(Set<Baskets> customersBaskets) {
+	public void setCustomersBaskets(Set<Basket> customersBaskets) {
 		this.customersBaskets = customersBaskets;
 	}
 	
@@ -127,7 +127,7 @@ public class Customers {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Customers other = (Customers) obj;
+		Customer other = (Customer) obj;
 		if (customerID != other.customerID)
 			return false;
 		return true;

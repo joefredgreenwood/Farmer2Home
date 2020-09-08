@@ -8,9 +8,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Baskets {
+public class Basket {
 	
-	public Baskets() {
+	public Basket() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -35,18 +35,14 @@ public class Baskets {
 	
 	
 	
-	
-	
-	
-	
 	/////////////////////////////////////////Foreign Keys/////////////////////////////////////////
 	
-Set<Customers> customersBasket = new HashSet<Customers>();	
+Set<Customer> customersBasket = new HashSet<Customer>();	
 	
-	public Set<Customers> getCustomersBasket() {
+	public Set<Customer> getCustomersBasket() {
 	return customersBasket;
 }
-public void setCustomersBasket(Set<Customers> customersBasket) {
+public void setCustomersBasket(Set<Customer> customersBasket) {
 	this.customersBasket = customersBasket;
 }
 	
@@ -81,7 +77,7 @@ public void setCustomersBasket(Set<Customers> customersBasket) {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Baskets other = (Baskets) obj;
+		Basket other = (Basket) obj;
 		if (basketID != other.basketID)
 			return false;
 		return true;

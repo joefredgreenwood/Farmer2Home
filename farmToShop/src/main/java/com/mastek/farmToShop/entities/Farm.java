@@ -3,10 +3,10 @@ package com.mastek.farmToShop.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Farms {
+public class Farm {
 	
 	
-	public Farms() {
+	public Farm() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -60,13 +60,13 @@ public class Farms {
 	
 	
 	////////////////////////////////////////////////Foreign Keys//////////////////////////////////////////
-	Set<Products> farmProduce = new HashSet<Products>(); //Many to many
+	Set<Product> farmProduce = new HashSet<Product>(); //Many to many
 	
 		
-	public Set<Products> getFarmProduce() {
+	public Set<Product> getFarmProduce() {
 		return farmProduce;
 	}
-	public void setFarmProduce(Set<Products> farmProduce) {
+	public void setFarmProduce(Set<Product> farmProduce) {
 		this.farmProduce = farmProduce;
 	}
 	
@@ -95,7 +95,7 @@ public class Farms {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Farms other = (Farms) obj;
+		Farm other = (Farm) obj;
 		if (farmID != other.farmID)
 			return false;
 		return true;

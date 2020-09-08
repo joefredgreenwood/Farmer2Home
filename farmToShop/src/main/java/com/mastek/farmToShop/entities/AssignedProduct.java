@@ -5,9 +5,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class AssignedProducts {
+public class AssignedProduct {
 	
-	public AssignedProducts() {
+	public AssignedProduct() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -31,20 +31,20 @@ public class AssignedProducts {
 	
 	
 	///////////////////////////////Foreign Keys////////////////////////////////////
-	Baskets currentBasket;
-	Products currentProduct;
+	Basket currentBasket;
+	Product currentProduct;
 	
 	
-	public Baskets getCurrentBasket() {
+	public Basket getCurrentBasket() {
 		return currentBasket;
 	}
-	public void setCurrentBasket(Baskets currentBasket) {
+	public void setCurrentBasket(Basket currentBasket) {
 		this.currentBasket = currentBasket;
 	}
-	public Products getCurrentProduct() {
+	public Product getCurrentProduct() {
 		return currentProduct;
 	}
-	public void setCurrentProduct(Products currentProduct) {
+	public void setCurrentProduct(Product currentProduct) {
 		this.currentProduct = currentProduct;
 	}
 	@Override
@@ -67,7 +67,7 @@ public class AssignedProducts {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AssignedProducts other = (AssignedProducts) obj;
+		AssignedProduct other = (AssignedProduct) obj;
 		if (assignedProductID != other.assignedProductID)
 			return false;
 		return true;
