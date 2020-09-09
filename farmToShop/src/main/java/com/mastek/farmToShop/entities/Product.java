@@ -20,6 +20,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
@@ -30,13 +31,13 @@ public class Product {
 		// TODO Auto-generated constructor stub
 	}
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@FormParam("product_id")
 	int productID;
-	String productName;
-	int productQuantity;
-	double productPrice;
 	
+
 
 //	Product currentProduct;								//SAJS join one to many (assigned prod-prod)
 //	@ManyToOne
@@ -50,6 +51,15 @@ public class Product {
 //	}
 //	
 
+
+	@FormParam("product_name")
+	String productName;
+	
+	@FormParam("product_quantity")
+	int productQuantity;
+	
+	@FormParam("product_price")
+	double productPrice;
 	
 	/*	Set<Farm> farmProduct = new HashSet<Farm>();          //SAJS JOIN     (farm-product)   
 	

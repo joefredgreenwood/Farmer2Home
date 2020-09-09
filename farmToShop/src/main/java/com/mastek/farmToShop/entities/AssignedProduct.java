@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlTransient;
@@ -56,9 +58,14 @@ public class AssignedProduct {
 //		this.currentBasket = currentBasket;
 //	}
 	
+	
+	
 //	Set<Product> currentProduct = new HashSet<Product>();						//SAJS JOIN One assigned prod to many Products
-//	
+//
 //	@OneToMany (mappedBy="currentProduct", cascade=CascadeType.ALL)
+//	@JoinTable (name="current_products",
+//				joinColumns= {@JoinColumn(name="fk_assignedProductID")},
+//				inverseJoinColumns= {@JoinColumn(name="fk_prodno")})
 //	@XmlTransient
 //	public Product getCurrentProduct() {
 //		return currentProduct;
@@ -66,6 +73,8 @@ public class AssignedProduct {
 //	public void setCurrentProduct(Product currentProduct) {
 //		this.currentProduct = currentProduct;
 //	}
+	
+	
 	@Override
 	public String toString() {
 		return "AssignedProducts [assignedProductID=" + assignedProductID + ", productQuantity=" + productQuantity
