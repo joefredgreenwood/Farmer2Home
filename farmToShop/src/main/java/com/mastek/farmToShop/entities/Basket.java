@@ -3,11 +3,17 @@ package com.mastek.farmToShop.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table
@@ -22,7 +28,8 @@ public class Basket {
 	int basketID;
 	float basketValue;
 	
-
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getBasketID() {
 		return basketID;
 	}
@@ -42,21 +49,34 @@ public class Basket {
 	
 	/////////////////////////////////////////Foreign Keys/////////////////////////////////////////
 	
-Set<Customer> customersBasket = new HashSet<Customer>();	
-	
-	public Set<Customer> getCustomersBasket() {
-	return customersBasket;
-}
-public void setCustomersBasket(Set<Customer> customersBasket) {
-	this.customersBasket = customersBasket;
-}
-	
+//	Set<Customer> customersBasket = new HashSet<Customer>();				//SAJS JOIN Customer to basket MANY TO MANY
+//
+//	@ManyToMany (mappedBy="customersBaskets")
+//	@XmlTransient
+//	public Set<Customer> getCustomersBasket() {
+//		return customersBasket;
+//	}
+//	public void setCustomersBasket(Set<Customer> customersBasket) {
+//		this.customersBasket = customersBasket;
+//	}
 
 
 
 
-
-
+//	Set<Transaction> basketTransactions = new HashSet<Transaction>();		//SAJS JOIN basket to transaction ONE TO ONE
+//	
+//	@OneToOne (cascade=CascadeType.ALL)
+//	@JoinTable(name="Basket_Transactions",
+//			   joinColumns= {@JoinColumn(name="fk_basketID")},
+//			   inverseJoinColumns = {@JoinColumn(name="fk_transactionID")})
+//
+//	@XmlTransient
+//	public Set<Transaction> getBasketTransactions() {
+//		return basketTransactions;
+//	}
+//	public void setBasketTransactions(Set<Transaction> basketTransactions) {
+//		this.basketTransactions = basketTransactions;
+//	}
 
 
 
@@ -87,7 +107,10 @@ public void setCustomersBasket(Set<Customer> customersBasket) {
 			return false;
 		return true;
 	}
+	
 
+	
+	
 	
 	
 	

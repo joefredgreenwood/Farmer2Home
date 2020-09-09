@@ -1,13 +1,18 @@
 package com.mastek.farmToShop.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-@Table
+@Table(name="Transaction_DAO")
 public class Transaction {
 	
 	public Transaction() {
@@ -20,7 +25,8 @@ public class Transaction {
 	String transactionData;
 	float transactionValue;
 	
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getTransactionID() {
 		return transactionID;
 	}
@@ -39,6 +45,20 @@ public class Transaction {
 	public void setTransactionValue(float transactionValue) {
 		this.transactionValue = transactionValue;
 	}
+	
+	
+//	Set<Basket> basketTransations = new HashSet<Basket>();						//SAJS ONE TO ONE BASKET AND TRANSACTION
+//	
+//	@OneToOne (mappedBy="basketTransactions")
+//	@XmlTransient
+//	public Set<Basket> getBasketTransations() {
+//		return basketTransations;
+//	}
+//	public void setBasketTransations(Set<Basket> basketTransations) {
+//		this.basketTransations = basketTransations;
+//	}
+
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -48,6 +68,7 @@ public class Transaction {
 	}
 	
 	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

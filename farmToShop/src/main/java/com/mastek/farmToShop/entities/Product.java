@@ -1,13 +1,24 @@
 package com.mastek.farmToShop.entities;
 
+
+import javax.persistence.Column;
 import java.util.HashSet;
+
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+
+import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -24,10 +35,23 @@ public class Product {
 	int productID;
 	String productName;
 	int productQuantity;
-	float productPrice;
+	double productPrice;
 	
+
+//	Product currentProduct;								//SAJS join one to many (assigned prod-prod)
+//	@ManyToOne
+//	@JoinColumn(name="fk_assignedProductID")
+//	@XmlTransient
+//	public Product getCurrentProduct() {
+//		return currentProduct;
+//	}
+//	public void setCurrentProduct(Product currentProduct) {
+//		this.currentProduct = currentProduct;
+//	}
+//	
+
 	
-	/*	Set<Farm> farmProduct = new HashSet<Farm>();                     
+	/*	Set<Farm> farmProduct = new HashSet<Farm>();          //SAJS JOIN     (farm-product)   
 	
 	@ManyToMany (mappedBy="farmProduce")
 	@XmlTransient
@@ -38,12 +62,12 @@ public void setFarmProduct(Set<Farm> farmProduct) {
 	this.farmProduct = farmProduct;										
 }																	
 */
-	
-	
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getProductID() {
 		return productID;
 	}
+	
 	public void setProductID(int productID) {
 		this.productID = productID;
 	}
@@ -59,12 +83,18 @@ public void setFarmProduct(Set<Farm> farmProduct) {
 	public void setProductQuantity(int productQuantity) {
 		this.productQuantity = productQuantity;
 	}
-	public float getProductPrice() {
+	public double getProductPrice() {
 		return productPrice;
 	}
-	public void setProductPrice(float productPrice) {
+	public void setProductPrice(double productPrice) {
 		this.productPrice = productPrice;
 	}
+	
+	
+	
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -3,14 +3,28 @@ package com.mastek.farmToShop.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
+
+@Entity
+@Table
 
 public class Customer {
 	
 	public Customer() {
-		// TODO Auto-generated constructor stub
+	
 	}
 	
 	@Id
@@ -25,7 +39,8 @@ public class Customer {
 	String customerPassword;
 	
 	
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getCustomerID() {
 		return customerID;
 	}
@@ -87,17 +102,21 @@ public class Customer {
 	
 	
 	////////////////////////////////////////////Foreign Keys//////////////////////////////////////////////////////
-	Set<Basket> customersBaskets = new HashSet<Basket>();	
+//	Set<Basket> customersBaskets = new HashSet<Basket>();	
 	
-	
-	
-	public Set<Basket> getCustomersBaskets() {
-		return customersBaskets;
-	}
-	public void setCustomersBaskets(Set<Basket> customersBaskets) {
-		this.customersBaskets = customersBaskets;
-	}
-	
+//	@ManyToMany(cascade=CascadeType.ALL)									//SAJS Join
+//	@JoinTable(name="Customers_Baskets",
+//			   joinColumns= {@JoinColumn(name="fk_customerID")},
+//			   inverseJoinColumns = {@JoinColumn(name="fk_basketID")})
+//	
+//	@XmlTransient
+//	public Set<Basket> getCustomersBaskets() {
+//		return customersBaskets;
+//	}
+//	public void setCustomersBaskets(Set<Basket> customersBaskets) {
+//		this.customersBaskets = customersBaskets;
+//	}
+//	
 	
 	
 	

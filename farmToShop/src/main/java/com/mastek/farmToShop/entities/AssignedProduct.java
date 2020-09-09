@@ -1,10 +1,18 @@
 package com.mastek.farmToShop.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.hibernate.annotations.GeneratorType;
 
 @Entity
 @Table
@@ -19,6 +27,8 @@ public class AssignedProduct {
 	int assignedProductID;
 	int productQuantity;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getAssignedProductID() {
 		return assignedProductID;
 	}
@@ -35,22 +45,27 @@ public class AssignedProduct {
 	
 	
 	///////////////////////////////Foreign Keys////////////////////////////////////
-	Basket currentBasket;
-	Product currentProduct;
+//	Basket currentBasket;
+//	Product currentProduct;
+//	
+//	
+//	public Basket getCurrentBasket() {
+//		return currentBasket;
+//	}
+//	public void setCurrentBasket(Basket currentBasket) {
+//		this.currentBasket = currentBasket;
+//	}
 	
-	
-	public Basket getCurrentBasket() {
-		return currentBasket;
-	}
-	public void setCurrentBasket(Basket currentBasket) {
-		this.currentBasket = currentBasket;
-	}
-	public Product getCurrentProduct() {
-		return currentProduct;
-	}
-	public void setCurrentProduct(Product currentProduct) {
-		this.currentProduct = currentProduct;
-	}
+//	Set<Product> currentProduct = new HashSet<Product>();						//SAJS JOIN One assigned prod to many Products
+//	
+//	@OneToMany (mappedBy="currentProduct", cascade=CascadeType.ALL)
+//	@XmlTransient
+//	public Product getCurrentProduct() {
+//		return currentProduct;
+//	}
+//	public void setCurrentProduct(Product currentProduct) {
+//		this.currentProduct = currentProduct;
+//	}
 	@Override
 	public String toString() {
 		return "AssignedProducts [assignedProductID=" + assignedProductID + ", productQuantity=" + productQuantity
