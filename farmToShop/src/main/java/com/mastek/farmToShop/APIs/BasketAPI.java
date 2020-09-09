@@ -9,31 +9,29 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-
-import com.mastek.farmToShop.entities.Product;
+import com.mastek.farmToShop.entities.Basket;
 
 @Path("/farmtoshop/")
-public interface ProductAPI {
+public interface BasketAPI {
+
 	
-		//http://localhost:7777/farmtoshop/product/list
+	//http://localhost:7777/farmtoshop/basket/list
 
 		@GET
-		@Path("/products/list")
+		@Path("/basket/list")
 		@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-		public Iterable<Product> listAllProducts();
+		public Iterable<Basket> listAllBaskets();
 
 		@GET
-		@Path("/products/find/{productID}")
+		@Path("/baskets/find/{basketsID}")
 		@Produces({MediaType.APPLICATION_JSON})
-		public Product findByProductid(@PathParam("productID") int productID);
+		public Basket findByBasketid(@PathParam("basketID") int basketID);
 
 
 		@POST
-		@Path("/products/register")
+		@Path("/baskets/register")
 		@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 		@Produces({MediaType.APPLICATION_JSON})
-		public Product registerNewProduct(@BeanParam Product newProduct);
+		public Basket registerNewBasket(@BeanParam Basket newBasket);
 
-	}
-
-
+}
