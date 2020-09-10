@@ -10,6 +10,7 @@ public class APIConfig extends ResourceConfig {
 			  
 	public APIConfig() {
 	register (farmShopServices.class);
+	register (CORSFilter.class);
 	}
 
 }

@@ -47,5 +47,16 @@ class FarmToShopApplicationTests {
 		
 		
 	}
+	
+	@Test
+	void removeProductTest() {
+		prodDAO.deleteById(1);
+	}
 
+	@Test
+	void findProductByID() {
+		Product prod = prodDAO.findById(1).get();
+		System.out.println(prod);
+	}
+	
 }
