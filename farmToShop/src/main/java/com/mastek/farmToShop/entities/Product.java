@@ -32,12 +32,6 @@ public class Product {
 	}
 	
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@FormParam("product_id")
-	int productID;
-	
-
 
 //	Product currentProduct;								//SAJS join one to many (assigned prod-prod)
 //	@ManyToOne
@@ -50,15 +44,17 @@ public class Product {
 //		this.currentProduct = currentProduct;
 //	}
 //	
+	
+	@FormParam("productID")
+	int productID;
 
-
-	@FormParam("product_name")
+	@FormParam("productName")
 	String productName;
 	
-	@FormParam("product_quantity")
+	@FormParam("productQuantity")
 	int productQuantity;
 	
-	@FormParam("product_price")
+	@FormParam("productPrice")
 	double productPrice;
 	
 	/*	Set<Farm> farmProduct = new HashSet<Farm>();          //SAJS JOIN     (farm-product)   

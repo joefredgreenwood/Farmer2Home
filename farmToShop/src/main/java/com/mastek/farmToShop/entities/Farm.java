@@ -9,9 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-
-
+import javax.ws.rs.FormParam;
 import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,13 +29,23 @@ public class Farm {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@FormParam("farmID")
 	int farmID;
+	
+	@FormParam("farmName")
 	String farmName;
+	
+	@FormParam("farmLocation")
 	FarmLocation farmLocation;
+	
+	@FormParam("farmType")
 	FarmType farmType;
+	
+	@FormParam("farmUsername")
 	String farmUsername;
+	
+	@FormParam("farmPassword")
 	String farmPassword;
 
 	@Id
