@@ -36,24 +36,19 @@ public class Product {
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
+
 	
-
-
-	@FormParam("product_id")
+	@FormParam("productID")
 	int productID;
-	
 
 
-
-
-
-	@FormParam("product_name")
+	@FormParam("productName")
 	String productName;
 	
-	@FormParam("product_quantity")
+	@FormParam("productQuantity")
 	int productQuantity;
 	
-	@FormParam("product_price")
+	@FormParam("productPrice")
 	double productPrice;
 	
 

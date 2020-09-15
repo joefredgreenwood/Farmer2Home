@@ -1,5 +1,6 @@
 package com.mastek.farmToShop.entities;
 
+import java.text.Normalizer.Form;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.ws.rs.FormParam;
+
 import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
@@ -21,9 +25,18 @@ public class Transaction {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	
-	int transactionID;	
+	
+
+
+	@FormParam("transactionID")
+	int transactionID;
+	
+	@FormParam("transactionData")
 	String transactionData;
+	
+	@FormParam("transactionValue")
 	float transactionValue;
 	
 	@Id
