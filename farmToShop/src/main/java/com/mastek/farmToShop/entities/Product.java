@@ -1,6 +1,7 @@
 package com.mastek.farmToShop.entities;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import java.util.HashSet;
 
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 
 import java.util.Set;
 import javax.persistence.Entity;
@@ -19,10 +21,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.ws.rs.FormParam;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement
 @Entity
 @Table
 public class Product {
@@ -32,24 +38,13 @@ public class Product {
 	}
 	
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@FormParam("product_id")
 	int productID;
 	
 
 
-//	Product currentProduct;								//SAJS join one to many (assigned prod-prod)
-//	@ManyToOne
-//	@JoinColumn(name="fk_assignedProductID")
-//	@XmlTransient
-//	public Product getCurrentProduct() {
-//		return currentProduct;
-//	}
-//	public void setCurrentProduct(Product currentProduct) {
-//		this.currentProduct = currentProduct;
-//	}
-//	
+
 
 
 	@FormParam("product_name")
@@ -61,17 +56,7 @@ public class Product {
 	@FormParam("product_price")
 	double productPrice;
 	
-	/*	Set<Farm> farmProduct = new HashSet<Farm>();          //SAJS JOIN     (farm-product)   
-	
-	@ManyToMany (mappedBy="farmProduce")
-	@XmlTransient
-public Set<Farm> getFarmProduct() {
-	return farmProduct;
-}
-public void setFarmProduct(Set<Farm> farmProduct) {
-	this.farmProduct = farmProduct;										
-}																	
-*/
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getProductID() {
@@ -102,6 +87,42 @@ public void setFarmProduct(Set<Farm> farmProduct) {
 	
 	
 	
+	
+	
+	
+	/////////////////////////////////////// Joins //////////////////////////////////////////////
+	
+	Set<Farm> farmProduct = new HashSet<Farm>();          //SAJS JOIN     (farm-product)   
+	
+	@ManyToMany (mappedBy="farmProduce")
+	@XmlTransient
+	public Set<Farm> getFarmProduct() {
+		return farmProduct;
+	}
+	public void setFarmProduct(Set<Farm> farmProduct) {
+		this.farmProduct = farmProduct;										
+	}																	
+
+	
+	
+	
+	Set<AssignedProduct> assignedProducts = new HashSet<AssignedProduct>();							//SAJS join one to many (assigned prod-prod)
+
+	@OneToMany (mappedBy="currentProduct", cascade=CascadeType.ALL)
+	@XmlTransient
+	public Set<AssignedProduct> getAssignedProducts() {
+		return assignedProducts;
+	}
+
+	public void setAssignedProducts(Set<AssignedProduct> assignedProducts) {
+		this.assignedProducts = assignedProducts;
+	}
+
+		
+	
+	
+	
+
 	
 	
 	

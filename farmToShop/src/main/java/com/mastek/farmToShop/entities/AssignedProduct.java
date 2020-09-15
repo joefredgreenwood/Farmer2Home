@@ -10,12 +10,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.GeneratorType;
 
+@XmlRootElement
 @Entity
 @Table
 public class AssignedProduct {
@@ -24,8 +28,7 @@ public class AssignedProduct {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+
 	int assignedProductID;
 	int productQuantity;
 	
@@ -60,19 +63,26 @@ public class AssignedProduct {
 	
 	
 	
-//	Set<Product> currentProduct = new HashSet<Product>();						//SAJS JOIN One assigned prod to many Products
-//
-//	@OneToMany (mappedBy="currentProduct", cascade=CascadeType.ALL)
-//	@JoinTable (name="current_products",
-//				joinColumns= {@JoinColumn(name="fk_assignedProductID")},
-//				inverseJoinColumns= {@JoinColumn(name="fk_prodno")})
-//	@XmlTransient
-//	public Product getCurrentProduct() {
-//		return currentProduct;
-//	}
-//	public void setCurrentProduct(Product currentProduct) {
-//		this.currentProduct = currentProduct;
-//	}
+	Product currentProduct;						//SAJS JOIN One assigned prod to many Products
+	
+	
+	@ManyToOne
+	@JoinColumn(name="fk_ProductID")
+//	@Transient
+	@XmlTransient
+	public Product getCurrentProduct() {
+		return currentProduct;
+	}
+	public void setCurrentProduct(Product currentProduct) {
+		this.currentProduct = currentProduct;
+	}
+
+
+	
+	
+	
+	
+	
 	
 	
 	@Override

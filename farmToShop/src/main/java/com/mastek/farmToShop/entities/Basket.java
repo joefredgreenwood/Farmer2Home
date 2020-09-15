@@ -13,8 +13,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement
 @Entity
 @Table
 public class Basket {
@@ -23,8 +25,7 @@ public class Basket {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	int basketID;
 	float basketValue;
 	
