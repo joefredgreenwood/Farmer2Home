@@ -22,8 +22,8 @@ public class Transaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int transactionID;	
-	String transactionData;
-	float transactionValue;
+	String transactionDate;
+	double transactionValue;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -33,16 +33,16 @@ public class Transaction {
 	public void setTransactionID(int transactionID) {
 		this.transactionID = transactionID;
 	}
-	public String getTransactionData() {
-		return transactionData;
+	public String getTransactionDate() {
+		return transactionDate;
 	}
-	public void setTransactionData(String transactionData) {
-		this.transactionData = transactionData;
+	public void setTransactionDate(String transactionDate) {
+		this.transactionDate = transactionDate;
 	}
-	public float getTransactionValue() {
+	public double getTransactionValue() {
 		return transactionValue;
 	}
-	public void setTransactionValue(float transactionValue) {
+	public void setTransactionValue(double transactionValue) {
 		this.transactionValue = transactionValue;
 	}
 	
@@ -86,7 +86,7 @@ public class Transaction {
 	
 	@Override
 	public String toString() {
-		return "Transaction [transactionID=" + transactionID + ", transactionData=" + transactionData
+		return "Transaction [transactionID=" + transactionID + ", transactionDate=" + transactionDate
 				+ ", transactionValue=" + transactionValue + "]";
 	}
 	

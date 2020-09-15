@@ -26,7 +26,7 @@ public class Basket {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int basketID;
-	float basketValue;
+	double basketValue;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -36,10 +36,10 @@ public class Basket {
 	public void setBasketID(int basketID) {
 		this.basketID = basketID;
 	}
-	public float getBasketValue() {
+	public double getBasketValue() {
 		return basketValue;
 	}
-	public void setBasketValue(float basketValue) {
+	public void setBasketValue(double basketValue) {
 		this.basketValue = basketValue;
 	}
 	
