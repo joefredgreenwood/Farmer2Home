@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -58,41 +60,48 @@ public class Basket {
 	
 	/////////////////////////////////////////Foreign Keys/////////////////////////////////////////
 	
-//	Set<Customer> customersBasket = new HashSet<Customer>();				//SAJS JOIN Customer to basket MANY TO MANY
-//
-//	@ManyToMany (mappedBy="customersBaskets")
-//	@XmlTransient
-//	public Set<Customer> getCustomersBasket() {
-//		return customersBasket;
-//	}
-//	public void setCustomersBasket(Set<Customer> customersBasket) {
-//		this.customersBasket = customersBasket;
-//	}
+	Customer linkedCustomer;
+
+	@ManyToOne
+	@JoinColumn(name="fk_CustomerID")
+	@XmlTransient
+	public Customer getLinkedCustomer() {
+		return linkedCustomer;
+	}
+	public void setLinkedCustomer(Customer linkedCustomer) {
+		this.linkedCustomer = linkedCustomer;
+	}
 
 
 
+	Transaction linkedTransactions;
 
-//	Set<Transaction> basketTransactions = new HashSet<Transaction>();		//SAJS JOIN basket to transaction ONE TO ONE
-//	
-//	@OneToOne (cascade=CascadeType.ALL)
-//	@JoinTable(name="Basket_Transactions",
-//			   joinColumns= {@JoinColumn(name="fk_basketID")},
-//			   inverseJoinColumns = {@JoinColumn(name="fk_transactionID")})
-//
-//	@XmlTransient
-//	public Set<Transaction> getBasketTransactions() {
-//		return basketTransactions;
-//	}
-//	public void setBasketTransactions(Set<Transaction> basketTransactions) {
-//		this.basketTransactions = basketTransactions;
-//	}
+
+	@OneToOne(mappedBy="linkedBasket")
+	@XmlTransient
+	public Transaction getLinkedTransactions() {
+		return linkedTransactions;
+	}
+	public void setLinkedTransactions(Transaction linkedTransactions) {
+		this.linkedTransactions = linkedTransactions;
+	}
 
 
 
+	Set<AssignedProduct> basketProducts = new HashSet<AssignedProduct>();
 
-
-
-@Override
+	@OneToMany (mappedBy="currentBasket", cascade=CascadeType.ALL)
+	@XmlTransient
+	public Set<AssignedProduct> getBasketProducts() {
+		return basketProducts;
+	}
+	public void setBasketProducts(Set<AssignedProduct> basketProducts) {
+		this.basketProducts = basketProducts;
+	}
+	
+	
+	
+	@Override
 	public String toString() {
 		return "Baskets [basketID=" + basketID + ", basketValue=" + basketValue + "]";
 	}

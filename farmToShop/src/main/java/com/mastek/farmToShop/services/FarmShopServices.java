@@ -21,7 +21,7 @@ import com.mastek.farmToShop.entities.Product;
 import com.mastek.farmToShop.entities.Transaction;
 
 @Component
-public class farmShopServices implements ProductAPI, BasketAPI, CustomerAPI, FarmAPI, TransactionAPI {
+public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, FarmAPI, TransactionAPI {
 	
 	@Autowired
 	ProductDAO prodDAO;
@@ -127,6 +127,9 @@ public class farmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		newBasket = BasDAO.save(newBasket);
 		return newBasket;
 	}
+	
+	
+	
 
 	
 }

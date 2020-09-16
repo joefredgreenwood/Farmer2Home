@@ -4,10 +4,12 @@ import java.text.Normalizer.Form;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,21 +25,17 @@ public class Transaction {
 	
 	public Transaction() {
 		// TODO Auto-generated constructor stub
-	}
-
-
-	
-	
+	}	
 
 
 	@FormParam("transactionID")
 	int transactionID;
 	
-	@FormParam("transactionData")
-	String transactionData;
+	@FormParam("transactionDate")
+	String transactionDate;
 	
 	@FormParam("transactionValue")
-	float transactionValue;
+	double transactionValue;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -47,30 +45,32 @@ public class Transaction {
 	public void setTransactionID(int transactionID) {
 		this.transactionID = transactionID;
 	}
-	public String getTransactionData() {
-		return transactionData;
+	public String getTransactionDate() {
+		return transactionDate;
 	}
-	public void setTransactionData(String transactionData) {
-		this.transactionData = transactionData;
+	public void setTransactionDate(String transactionDate) {
+		this.transactionDate = transactionDate;
 	}
-	public float getTransactionValue() {
+	public double getTransactionValue() {
 		return transactionValue;
 	}
-	public void setTransactionValue(float transactionValue) {
+	public void setTransactionValue(double transactionValue) {
 		this.transactionValue = transactionValue;
 	}
 	
 	
-//	Set<Basket> basketTransations = new HashSet<Basket>();						//SAJS ONE TO ONE BASKET AND TRANSACTION
-//	
-//	@OneToOne (mappedBy="basketTransactions")
-//	@XmlTransient
-//	public Set<Basket> getBasketTransations() {
-//		return basketTransations;
-//	}
-//	public void setBasketTransations(Set<Basket> basketTransations) {
-//		this.basketTransations = basketTransations;
-//	}
+	Basket linkedBasket;					//SAJS ONE TO ONE BASKET AND TRANSACTION
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="fk_BasketID")
+	@XmlTransient
+	public Basket getLinkedBasket() {
+		return linkedBasket;
+	}
+	public void setLinkedBasket(Basket linkedBasket) {
+		this.linkedBasket = linkedBasket;
+	}
+	
 
 	
 	@Override
@@ -100,7 +100,7 @@ public class Transaction {
 	
 	@Override
 	public String toString() {
-		return "Transaction [transactionID=" + transactionID + ", transactionData=" + transactionData
+		return "Transaction [transactionID=" + transactionID + ", transactionDate=" + transactionDate
 				+ ", transactionValue=" + transactionValue + "]";
 	}
 	

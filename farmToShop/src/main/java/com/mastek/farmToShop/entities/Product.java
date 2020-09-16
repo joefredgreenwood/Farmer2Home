@@ -21,6 +21,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -31,6 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @Entity
 @Table
+@NamedQuery(name="Product.findByFarmID", 
+			query="select p from Product p join Farm f where f.farmID=:farmID") 
 public class Product {
 	
 	public Product() {

@@ -50,16 +50,19 @@ public class AssignedProduct {
 	
 	
 	///////////////////////////////Foreign Keys////////////////////////////////////
-//	Basket currentBasket;
-//	Product currentProduct;
-//	
-//	
-//	public Basket getCurrentBasket() {
-//		return currentBasket;
-//	}
-//	public void setCurrentBasket(Basket currentBasket) {
-//		this.currentBasket = currentBasket;
-//	}
+	Basket currentBasket;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="fk_basketID")
+//	@Transient
+	@XmlTransient
+	public Basket getCurrentBasket() {
+		return currentBasket;
+	}
+	public void setCurrentBasket(Basket currentBasket) {
+		this.currentBasket = currentBasket;
+	}
 	
 	
 	
