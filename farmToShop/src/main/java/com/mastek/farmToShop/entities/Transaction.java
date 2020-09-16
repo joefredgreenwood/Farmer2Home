@@ -1,5 +1,6 @@
 package com.mastek.farmToShop.entities;
 
+import java.text.Normalizer.Form;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,21 +10,31 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.ws.rs.FormParam;
+
 import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement
 @Entity
 @Table(name="Transaction_DAO")
 public class Transaction {
 	
 	public Transaction() {
-		// TODO Auto-generated constructor stub
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int transactionID;	
+
+
+	@FormParam("transactionID")
+	int transactionID;
+	
+	@FormParam("transactionDate")
 	String transactionDate;
+	
+	@FormParam("transactionValue")
 	double transactionValue;
+
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

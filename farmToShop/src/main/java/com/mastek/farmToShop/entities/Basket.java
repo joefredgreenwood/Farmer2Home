@@ -13,20 +13,33 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+import javax.ws.rs.FormParam;
+
 import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement
 @Entity
 @Table
 public class Basket {
 	
 	public Basket() {
-		// TODO Auto-generated constructor stub
+
 	}
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+
+	@FormParam("basketID")
 	int basketID;
+	
+	@FormParam("basketValue")
 	double basketValue;
+
+	
+	
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

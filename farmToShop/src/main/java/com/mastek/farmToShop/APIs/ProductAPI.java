@@ -18,18 +18,18 @@ public interface ProductAPI {
 		//http://localhost:7777/farmtoshop/product/list
 
 		@GET
-		@Path("/products/list")
+		@Path("/product/list")
 		@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 		public Iterable<Product> listAllProducts();
 
 		@GET
-		@Path("/products/find/{productID}")
+		@Path("/product/find/{productID}")
 		@Produces({MediaType.APPLICATION_JSON})
 		public Product findByProductid(@PathParam("productID") int productID);
 
 
 		@POST
-		@Path("/products/register")
+		@Path("/product/register")
 		@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 		@Produces({MediaType.APPLICATION_JSON})
 		public Product registerNewProduct(@BeanParam Product newProduct);

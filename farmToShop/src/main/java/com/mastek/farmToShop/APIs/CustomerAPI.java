@@ -19,18 +19,18 @@ public interface CustomerAPI {
 	//http://localhost:7777/farmtoshop/customer/list
 
 	@GET
-	@Path("/customers/list")
+	@Path("/customer/list")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Iterable<Customer> listAllCustomers();
 	
 	@GET
-	@Path("/customers/find/{customerID}")
+	@Path("/customer/find/{customerID}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Customer findByCustomerid(@PathParam("customerID") int customerID);
 	
 	
 	@POST
-	@Path("/customers/register")
+	@Path("/customer/register")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces({MediaType.APPLICATION_JSON})
 	public Customer registerNewCustomer(@BeanParam Customer newCustomer);

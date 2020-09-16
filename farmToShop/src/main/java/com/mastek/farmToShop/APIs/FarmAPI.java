@@ -14,20 +14,20 @@ import com.mastek.farmToShop.entities.Farm;
 @Path("/farmtoshop/")
 public interface FarmAPI {
 	
-	//http://localhost:7777/farmtoshop/farms/list
+	//http://localhost:7777/farmtoshop/farm/list
 	@GET
-	@Path("/farms/list")
+	@Path("/farm/list")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Iterable<Farm> listAllFarms();
 	
 	@GET
-	@Path("/farms/find/{farmID}")
+	@Path("/farm/find/{farmID}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Farm findByFarmid(@PathParam("farmID") int farmID);
 	
 	
 	@POST
-	@Path("/farms/register")
+	@Path("/farm/register")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces({MediaType.APPLICATION_JSON})
 	public Farm registerNewFarm(@BeanParam Farm newFarm);

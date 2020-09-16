@@ -22,14 +22,15 @@ public interface BasketAPI {
 		@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 		public Iterable<Basket> listAllBaskets();
 
+		// http://localhost:7777/farmtoshop/basket/find/
 		@GET
-		@Path("/baskets/find/{basketsID}")
+		@Path("/basket/find/{basketID}")
 		@Produces({MediaType.APPLICATION_JSON})
 		public Basket findByBasketid(@PathParam("basketID") int basketID);
 
-
+		// http://localhost:7777/farmtoshop/basket/register
 		@POST
-		@Path("/baskets/register")
+		@Path("/basket/register")
 		@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 		@Produces({MediaType.APPLICATION_JSON})
 		public Basket registerNewBasket(@BeanParam Basket newBasket);

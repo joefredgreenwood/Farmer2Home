@@ -21,13 +21,13 @@ public interface TransactionAPI {
 	public Iterable<Transaction> listAllTransactions();
 
 	@GET
-	@Path("/transactions/find/{transactionID}")
+	@Path("/transaction/find/{transactionID}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Transaction findByTransactionid(@PathParam("transactionID") int transactionID);
 
 
 	@POST
-	@Path("/transactions/register")
+	@Path("/transaction/register")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces({MediaType.APPLICATION_JSON})
 	public Transaction registerNewTransaction(@BeanParam Transaction newTransaction);

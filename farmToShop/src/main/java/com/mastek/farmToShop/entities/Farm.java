@@ -9,9 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-
-
+import javax.persistence.Transient;
+import javax.ws.rs.FormParam;
 import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,8 +19,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement
 @Entity
 @Table
 public class Farm {
@@ -31,13 +32,24 @@ public class Farm {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+
+	@FormParam("farmID")
 	int farmID;
+	
+	@FormParam("farmName")
 	String farmName;
+	
+	@FormParam("farmLocation")
 	FarmLocation farmLocation;
+	
+	@FormParam("farmType")
 	FarmType farmType;
+	
+	@FormParam("farmUsername")
 	String farmUsername;
+	
+	@FormParam("farmPassword")
 	String farmPassword;
 
 	@Id
@@ -85,15 +97,13 @@ public class Farm {
 	
 	////////////////////////////////////////////////Foreign Keys//////////////////////////////////////////
 
-	/*Set<Product> farmProduce = new HashSet<Product>(); //Many to many
-
-/*	Set<Product> farmProduce = new HashSet<Product>();					//Many to many
+	
+	Set<Product> farmProduce = new HashSet<Product>();					//Many to many
 	@ManyToMany(cascade=CascadeType.ALL)								// configured many to many associations for the entities
 	@JoinTable(name="Farm_Produce", 									// the join table name
 			   joinColumns= {@JoinColumn(name="fk_farmID")}, 			// foreign key for the current class
-			   inverseJoinColumns = {@JoinColumn(name="fk_productID")})	//foreign key column for the collection
-
-	
+			   inverseJoinColumns = {@JoinColumn(name="fk_productID")})	//foreign key column for the collection	
+//	@Transient
 	@XmlTransient	// this will ignore the association property when shared via service
 	public Set<Product> getFarmProduce() {
 		return farmProduce;
@@ -101,7 +111,7 @@ public class Farm {
 	public void setFarmProduce(Set<Product> farmProduce) {
 		this.farmProduce = farmProduce;
 	}
-*/
+
 	
 	
 	

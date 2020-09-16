@@ -16,8 +16,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlTransient;
 
+@XmlRootElement
 @Entity
 @Table
 
@@ -27,15 +30,30 @@ public class Customer {
 	
 	}
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+
+	@FormParam("customerID")
 	int customerID;
+	
+	@FormParam("customerForename")
 	String customerForename;
+	
+	@FormParam("customerSurname")
 	String customerSurname;
+	
+	@FormParam("customerAddress")
 	String customerAddress;
+	
+	@FormParam("customerDOB")
 	String customerDOB;
+	
+	@FormParam("customerEmail")
 	String customerEmail;
+	
+	@FormParam("customerUsername")
 	String customerUsername;
+	
+	@FormParam("customerPassword")
 	String customerPassword;
 	
 	
