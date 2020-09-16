@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +25,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @Entity
 @Table
-
 public class Customer {
 	
 	public Customer() {
@@ -120,21 +121,17 @@ public class Customer {
 	
 	
 	////////////////////////////////////////////Foreign Keys//////////////////////////////////////////////////////
-//	Set<Basket> customersBaskets = new HashSet<Basket>();	
+	Set<Basket> customersBaskets = new HashSet<Basket>();	
 	
-//	@ManyToMany(cascade=CascadeType.ALL)									//SAJS Join
-//	@JoinTable(name="Customers_Baskets",
-//			   joinColumns= {@JoinColumn(name="fk_customerID")},
-//			   inverseJoinColumns = {@JoinColumn(name="fk_basketID")})
-//	
-//	@XmlTransient
-//	public Set<Basket> getCustomersBaskets() {
-//		return customersBaskets;
-//	}
-//	public void setCustomersBaskets(Set<Basket> customersBaskets) {
-//		this.customersBaskets = customersBaskets;
-//	}
-//	
+	@OneToMany (mappedBy="linkedCustomer", cascade=CascadeType.ALL)								//SAJS Join//	
+	@XmlTransient
+	public Set<Basket> getCustomersBaskets() {
+		return customersBaskets;
+	}
+	public void setCustomersBaskets(Set<Basket> customersBaskets) {
+		this.customersBaskets = customersBaskets;
+	}
+	
 	
 	
 	

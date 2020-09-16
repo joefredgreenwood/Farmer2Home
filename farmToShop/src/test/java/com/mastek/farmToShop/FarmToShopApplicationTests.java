@@ -22,7 +22,12 @@ import com.mastek.farmToShop.entities.FarmLocation;
 import com.mastek.farmToShop.entities.FarmType;
 
 import com.mastek.farmToShop.entities.Product;
+<<<<<<< HEAD
 import com.mastek.farmToShop.entities.Transaction;
+=======
+import com.mastek.farmToShop.services.JoinServices;
+
+>>>>>>> branch 'master' of https://github.com/joefredgreenwood/Farmer2Home.git
 
 @SpringBootTest
 class FarmToShopApplicationTests {
@@ -44,6 +49,9 @@ class FarmToShopApplicationTests {
 	
 	@Autowired
 	TransactionDAO TranDAO;
+	
+	@Autowired
+	JoinServices joinS;
 	
 	
 
@@ -108,16 +116,16 @@ class FarmToShopApplicationTests {
 */	
 
 	
-//	@Test
-//	void removeProductTest() {
-//		prodDAO.deleteById(1);
-//	}
+	@Test
+	void removeProductTest() {
+		prodDAO.deleteById(1);
+	}
 
-//	@Test
-//	void findProductByID() {
-//		Product prod = prodDAO.findById(1).get();
-//		System.out.println(prod);
-//	}
+	@Test
+	void findProductByID() {
+		Product prod = prodDAO.findById(1).get();
+		System.out.println(prod);
+	}
 	
 	@Test
 	void addFarm() {
@@ -141,6 +149,23 @@ class FarmToShopApplicationTests {
 		aprod = AsspDAO.save(aprod);
 		System.out.println(aprod);
 	}
+	
+	////////////////////////////////////////////////Joins////////////////////////////////////////////////
+//	@Test
+//	void assignProductToFarm() {
+//		joinS.assignProductToFarm(5, 1);
+//		
+//	}
+	
+//	@Test
+//	void findProductByFarm() {
+//		Iterable<Product> prods = prodDAO.findByFarmID(5);
+//		for (Product product : prods) {
+//			System.out.println(product);
+//		}
+//			
+//		
+//	}
 	
 }
 

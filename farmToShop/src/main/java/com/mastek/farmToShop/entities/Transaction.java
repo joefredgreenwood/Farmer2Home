@@ -4,10 +4,12 @@ import java.text.Normalizer.Form;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,7 +24,11 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Transaction {
 	
 	public Transaction() {
+
 	}
+
+
+		
 
 
 
@@ -34,6 +40,7 @@ public class Transaction {
 	
 	@FormParam("transactionValue")
 	double transactionValue;
+
 
 	
 	@Id
@@ -58,16 +65,18 @@ public class Transaction {
 	}
 	
 	
-//	Set<Basket> basketTransations = new HashSet<Basket>();						//SAJS ONE TO ONE BASKET AND TRANSACTION
-//	
-//	@OneToOne (mappedBy="basketTransactions")
-//	@XmlTransient
-//	public Set<Basket> getBasketTransations() {
-//		return basketTransations;
-//	}
-//	public void setBasketTransations(Set<Basket> basketTransations) {
-//		this.basketTransations = basketTransations;
-//	}
+	Basket linkedBasket;					//SAJS ONE TO ONE BASKET AND TRANSACTION
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="fk_BasketID")
+	@XmlTransient
+	public Basket getLinkedBasket() {
+		return linkedBasket;
+	}
+	public void setLinkedBasket(Basket linkedBasket) {
+		this.linkedBasket = linkedBasket;
+	}
+	
 
 	
 	@Override
