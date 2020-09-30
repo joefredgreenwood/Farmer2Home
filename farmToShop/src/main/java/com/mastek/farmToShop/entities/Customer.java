@@ -11,8 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +27,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @Entity
 @Table
+@NamedQuery(name="Customer.findByUsernameAndPassword", //Declare query name as method in dao
+query="select a from Customer a where a.customerUsername=:username and a.customerPassword=:password")
 public class Customer {
 	
 	public Customer() {
@@ -96,6 +100,7 @@ public class Customer {
 	public void setCustomerEmail(String customerEmail) {
 		this.customerEmail = customerEmail;
 	}
+	@Column(unique=true)
 	public String getCustomerUsername() {
 		return customerUsername;
 	}

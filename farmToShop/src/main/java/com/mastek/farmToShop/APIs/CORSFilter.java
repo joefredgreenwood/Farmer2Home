@@ -1,4 +1,5 @@
 package com.mastek.farmToShop.APIs;
+
 import java.io.IOException;
 
 import javax.ws.rs.container.ContainerRequestContext;
@@ -10,25 +11,29 @@ import org.springframework.stereotype.Component;
 
 @Provider
 @Component
-public class CORSFilter implements ContainerResponseFilter {
-	
-	//@Override
-	public void filter(ContainerRequestContext requestContext,
-			   ContainerResponseContext responseContext)
-	throws IOException {
+public class CORSFilter implements ContainerResponseFilter{
+//	@Override
+	public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)
+			throws IOException {
+		
+		responseContext.getHeaders().add(
+	                "Access-Control-Allow-Origin", "*");
+	         
+	        responseContext.getHeaders().add(
+	               "Access-Control-Allow-Headers",
+	               "X-Requested-With,Origin, Content-Type, Accept");
+	        
+	        responseContext.getHeaders().add(
+	                "Access-Control-Allow-Methods", 
+	                "GET, POST, PUT, DELETE");
 
-responseContext.getHeaders().add(
-     "Access-Control-Allow-Origin", "*");
+		
+	}
 
-responseContext.getHeaders().add(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,Origin, Content-Type, Accept");
+ 
 
-responseContext.getHeaders().add(
-     "Access-Control-Allow-Methods", 
-     "GET, POST, PUT, DELETE");
+
 
 
 }
 
-}

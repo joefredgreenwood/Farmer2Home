@@ -33,8 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @Entity
 @Table
-@NamedQuery(name="Product.findByFarmID", 
-			query="select p from Product p join Farm f where f.farmID=:farmID") 
+//@NamedQuery(name="Product.findByFarmID", 
+//			query="select p from (((Product p join farm_produce g ((on p.productID=:g.fk_productid)) join Farm f on ((g.fk_farmid=:f.farmid)) where f.farmid=:farmID") 
 public class Product {
 	
 	public Product() {
