@@ -20,14 +20,9 @@ import com.mastek.farmToShop.entities.AssignedProduct;
 import com.mastek.farmToShop.entities.Farm;
 import com.mastek.farmToShop.entities.FarmLocation;
 import com.mastek.farmToShop.entities.FarmType;
-
 import com.mastek.farmToShop.entities.Product;
-<<<<<<< HEAD
 import com.mastek.farmToShop.entities.Transaction;
-=======
 import com.mastek.farmToShop.services.JoinServices;
-
->>>>>>> branch 'master' of https://github.com/joefredgreenwood/Farmer2Home.git
 
 @SpringBootTest
 class FarmToShopApplicationTests {
@@ -115,18 +110,19 @@ class FarmToShopApplicationTests {
 	}
 */	
 
-	
+	/*
 	@Test
 	void removeProductTest() {
 		prodDAO.deleteById(1);
 	}
-
+	/*
 	@Test
 	void findProductByID() {
 		Product prod = prodDAO.findById(1).get();
 		System.out.println(prod);
 	}
 	
+	/*
 	@Test
 	void addFarm() {
 		Farm farm = new Farm();
@@ -141,7 +137,7 @@ class FarmToShopApplicationTests {
 		
 	}
 	
-	@Test
+	/*@Test
 	void addAssignedProduct() {
 		AssignedProduct aprod = new AssignedProduct();
 		aprod.setProductQuantity(20);
@@ -149,6 +145,7 @@ class FarmToShopApplicationTests {
 		aprod = AsspDAO.save(aprod);
 		System.out.println(aprod);
 	}
+*/
 	
 	////////////////////////////////////////////////Joins////////////////////////////////////////////////
 //	@Test
