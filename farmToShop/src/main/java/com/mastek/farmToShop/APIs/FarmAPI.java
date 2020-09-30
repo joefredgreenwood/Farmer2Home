@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.mastek.farmToShop.entities.Farm;
+import com.mastek.farmToShop.entities.FarmLocation;
 
 @Path("/farmtoshop/")
 public interface FarmAPI {
@@ -31,5 +32,11 @@ public interface FarmAPI {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces({MediaType.APPLICATION_JSON})
 	public Farm registerNewFarm(@BeanParam Farm newFarm);
+	
+	@GET
+	@Path("/farm/location/{farmLocation}")
+	@Produces({MediaType.APPLICATION_JSON})
+	public Iterable<Farm> findByFarmLocation(@PathParam("farmLocation") FarmLocation farmLocation);
+	
 	
 }

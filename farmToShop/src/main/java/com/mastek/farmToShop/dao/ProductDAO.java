@@ -13,7 +13,7 @@ import com.mastek.farmToShop.entities.Product;
 public interface ProductDAO extends CrudRepository<Product, Integer>{
 
 
-Iterable<Product> findByFarmID(@Param("farmID")int farmID);
+//Iterable<Product> findByFarmID(@Param("farmID")int farmID);
 
 
 }
