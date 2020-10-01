@@ -7,26 +7,23 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import com.mastek.farmToShop.dao.AssignedProductDAO;
 import com.mastek.farmToShop.dao.BasketDAO;
 import com.mastek.farmToShop.dao.CustomerDAO;
 import com.mastek.farmToShop.dao.FarmDAO;
 import com.mastek.farmToShop.dao.ProductDAO;
 import com.mastek.farmToShop.dao.TransactionDAO;
-
 import com.mastek.farmToShop.entities.Basket;
 import com.mastek.farmToShop.entities.Customer;
-
 import com.mastek.farmToShop.entities.AssignedProduct;
 import com.mastek.farmToShop.entities.Farm;
 import com.mastek.farmToShop.entities.FarmLocation;
 import com.mastek.farmToShop.entities.FarmType;
-
 import com.mastek.farmToShop.entities.Product;
-
 import com.mastek.farmToShop.entities.Transaction;
+import com.mastek.farmToShop.services.JoinServices;
 import com.mastek.farmToShop.services.FarmShopServices;
+
 
 
 
@@ -55,7 +52,6 @@ class FarmToShopApplicationTests {
 	
 	@Autowired
 	FarmShopServices farmS;
-	
 	
 
 
@@ -117,17 +113,31 @@ class FarmToShopApplicationTests {
 	}
 
 	
+//	@Test
+//	void removeProductTest() {
+//		prodDAO.deleteById(1);
+//	}
+
+//	@Test
+//	void findProductByID() {
+//		Product prod = prodDAO.findById(1).get();
+//		System.out.println(prod);
+//	}
+
+	/*
 	@Test
 	void removeProductTest() {
 		prodDAO.deleteById(1);
 	}
-
+	/*
 	@Test
 	void findProductByID() {
 		Product prod = prodDAO.findById(1).get();
 		System.out.println(prod);
 	}
+
 	
+	/*
 	@Test
 	void addFarm() {
 		Farm farm = new Farm();
@@ -142,7 +152,17 @@ class FarmToShopApplicationTests {
 		
 	}
 	
-	@Test
+
+//	@Test
+//	void addAssignedProduct() {
+//		AssignedProduct aprod = new AssignedProduct();
+//		aprod.setProductQuantity(20);
+//		
+//		aprod = AsspDAO.save(aprod);
+//		System.out.println(aprod);
+//	}
+
+	/*@Test
 	void addAssignedProduct() {
 		AssignedProduct aprod = new AssignedProduct();
 		aprod.setProductQuantity(20);
@@ -150,6 +170,8 @@ class FarmToShopApplicationTests {
 		aprod = AsspDAO.save(aprod);
 		System.out.println(aprod);
 	}
+*/
+
 	
 	////////////////////////////////////////////////Joins////////////////////////////////////////////////
 	@Test
