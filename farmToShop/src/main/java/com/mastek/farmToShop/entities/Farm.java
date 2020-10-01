@@ -19,12 +19,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 @Entity
 @Table
+@NamedQuery(name="Farm.findByFarmLocation",
+query="select f from Farm f where f.farmLocation=:farmLocation")
 public class Farm {
 	
 	

@@ -2,6 +2,8 @@ package com.mastek.farmToShop;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +22,9 @@ import com.mastek.farmToShop.entities.FarmType;
 import com.mastek.farmToShop.entities.Product;
 import com.mastek.farmToShop.entities.Transaction;
 import com.mastek.farmToShop.services.JoinServices;
+import com.mastek.farmToShop.services.FarmShopServices;
+
+
 
 
 
@@ -44,9 +49,11 @@ class FarmToShopApplicationTests {
 	@Autowired
 	TransactionDAO TranDAO;
 	
-	@Autowired
-	JoinServices joinS;
 	
+	@Autowired
+	FarmShopServices farmS;
+	
+
 
 
 	@Test
@@ -94,7 +101,7 @@ class FarmToShopApplicationTests {
 	}
 
 	
-/*	@Test
+	@Test
 	void addTransactionTest() {
 		
 		Transaction tran = new Transaction();
@@ -104,7 +111,6 @@ class FarmToShopApplicationTests {
 		tran = TranDAO.save(tran);
 		System.out.println(tran);
 	}
-*/	
 
 	
 //	@Test
@@ -117,7 +123,21 @@ class FarmToShopApplicationTests {
 //		Product prod = prodDAO.findById(1).get();
 //		System.out.println(prod);
 //	}
+
+	/*
+	@Test
+	void removeProductTest() {
+		prodDAO.deleteById(1);
+	}
+	/*
+	@Test
+	void findProductByID() {
+		Product prod = prodDAO.findById(1).get();
+		System.out.println(prod);
+	}
+
 	
+	/*
 	@Test
 	void addFarm() {
 		Farm farm = new Farm();
@@ -132,6 +152,7 @@ class FarmToShopApplicationTests {
 		
 	}
 	
+
 //	@Test
 //	void addAssignedProduct() {
 //		AssignedProduct aprod = new AssignedProduct();
@@ -140,23 +161,42 @@ class FarmToShopApplicationTests {
 //		aprod = AsspDAO.save(aprod);
 //		System.out.println(aprod);
 //	}
+
+	/*@Test
+	void addAssignedProduct() {
+		AssignedProduct aprod = new AssignedProduct();
+		aprod.setProductQuantity(20);
+		
+		aprod = AsspDAO.save(aprod);
+		System.out.println(aprod);
+	}
+*/
+
 	
 	////////////////////////////////////////////////Joins////////////////////////////////////////////////
-//	@Test
-//	void assignProductToFarm() {
-//		joinS.assignProductToFarm(5, 1);
-//		
-//	}
+	@Test
+	void assignProductToFarm() {
+		farmS.assignProductToFarm(5, 1);
+		
+	}
 	
-//	@Test
-//	void findProductByFarm() {
-//		Iterable<Product> prods = prodDAO.findByFarmID(5);
-//		for (Product product : prods) {
-//			System.out.println(product);
-//		}
-//			
-//		
-//	}
+	@Test
+	void findProductByFarm() {
+		Set<Product> prods = farmS.findProductByFarmID(5);
+		for (Product product : prods) {
+			System.out.println(product);
+		}
+		assertNotNull(prods, "List could not be made");
+	}
+	
+	@Test
+	void findFarmByLocation() {
+		Iterable<Farm> farms = FarDAO.findByFarmLocation(FarmLocation.SCOTLAND);
+		for (Farm farm : farms) {
+			System.out.println(farm);			
+		}
+		assertNotNull(farms, "Couldn't find anything");
+				}
 	
 }
 
