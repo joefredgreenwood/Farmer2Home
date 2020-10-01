@@ -9,6 +9,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+
 import com.mastek.farmToShop.entities.Farm;
 import com.mastek.farmToShop.entities.FarmLocation;
 
@@ -37,6 +38,11 @@ public interface FarmAPI {
 	@Path("/farm/location/{farmLocation}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Iterable<Farm> findByFarmLocation(@PathParam("farmLocation") FarmLocation farmLocation);
+	
+	@GET
+	@Path("/farm/findu/{username}/{password}")
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	public Farm findByFarmUsernameAndPassword(@PathParam("username") String username, @PathParam("password") String password);
 	
 	
 }

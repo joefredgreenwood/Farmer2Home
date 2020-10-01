@@ -21,7 +21,6 @@ import com.mastek.farmToShop.entities.FarmLocation;
 import com.mastek.farmToShop.entities.FarmType;
 import com.mastek.farmToShop.entities.Product;
 import com.mastek.farmToShop.entities.Transaction;
-import com.mastek.farmToShop.services.JoinServices;
 import com.mastek.farmToShop.services.FarmShopServices;
 
 

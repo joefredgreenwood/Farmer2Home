@@ -12,5 +12,7 @@ import com.mastek.farmToShop.entities.FarmLocation;
 public interface FarmDAO extends CrudRepository<Farm, Integer>{
 	
 	Iterable<Farm> findByFarmLocation(@Param("farmLocation")FarmLocation farmLocation);
+	Farm findByUsernameAndPassword(@Param("username")String username, @Param("password")String password);
+	Farm findByUsername(@Param("username")String username);
 
 }

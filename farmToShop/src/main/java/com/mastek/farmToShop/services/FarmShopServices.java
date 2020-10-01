@@ -109,13 +109,26 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		return FarDAO.findById(farmID).get();
 	}
 
-	public Farm registerNewFarm(Farm newFarm) {
+	public Farm registerNewFarm(Farm newFarm) throws NoSuchElementException{
+		if(FarDAO.findByUsername(newFarm.getFarmUsername())!=null) {
+			throw new NoSuchElementException("Username already exists");
+		}
+		else {
 		newFarm = FarDAO.save(newFarm);
 		return newFarm;
+		}
 	}
 	
 	public Iterable<Farm> findByFarmLocation(FarmLocation farmLocation) {
 		Iterable<Farm> farm = FarDAO.findByFarmLocation(farmLocation);
+		return farm;
+	}
+	@Transactional
+	public Farm findByFarmUsernameAndPassword(String username, String password) throws IllegalArgumentException{
+		Farm farm = FarDAO.findByUsernameAndPassword(username, password);
+		if (farm==null) {
+			throw new IllegalArgumentException("Username or Password invalid");
+		}
 		return farm;
 	}
 	
@@ -275,6 +288,8 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		
 		return bask;
 	}
+
+
 	
 	
 	
