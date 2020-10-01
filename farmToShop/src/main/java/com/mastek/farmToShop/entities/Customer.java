@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
@@ -27,8 +28,12 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @Entity
 @Table
-@NamedQuery(name="Customer.findByUsernameAndPassword", //Declare query name as method in dao
-query="select a from Customer a where a.customerUsername=:username and a.customerPassword=:password")
+@NamedQueries({
+	@NamedQuery(name="Customer.findByUsernameAndPassword", //Declare query name as method in dao
+			query="select a from Customer a where a.customerUsername=:username and a.customerPassword=:password"),
+	@NamedQuery(name="Customer.findByUsername", //Declare query name as method in dao
+			query="select a from Customer a where a.customerUsername=:username")
+})
 public class Customer {
 	
 	public Customer() {

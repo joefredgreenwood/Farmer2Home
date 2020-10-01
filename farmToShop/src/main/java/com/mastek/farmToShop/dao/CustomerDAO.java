@@ -12,5 +12,6 @@ import com.mastek.farmToShop.entities.Customer;
 public interface CustomerDAO extends CrudRepository<Customer, Integer> {
 	
 	Customer findByUsernameAndPassword(@Param("username")String username, @Param("password")String password);
+	Customer findByUsername(@Param("username")String username);
 
 }

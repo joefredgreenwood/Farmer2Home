@@ -2,6 +2,7 @@ package com.mastek.farmToShop.services;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import javax.transaction.Transactional;
@@ -132,12 +133,16 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		return CusDAO.findById(customerID).get();
 	}
 	@Transactional
-	public Customer registerNewCustomer(Customer newCustomer) {
+	public Customer registerNewCustomer(Customer newCustomer) throws NoSuchElementException{
 		Basket basket = new Basket();
 		BasDAO.save(basket);
+		if (CusDAO.findByUsername(newCustomer.getCustomerUsername())!=null) {
+			throw new NoSuchElementException("Username already exists");
+		}
+		else {
 		newCustomer = CusDAO.save(newCustomer);
 		linkBasketToCustomer(basket.getBasketID(), newCustomer.getCustomerID());
-		return newCustomer;
+		return newCustomer;}
 	}
 	
 	public Customer findByUsernameAndPassword(String username, String password) throws IllegalArgumentException{
