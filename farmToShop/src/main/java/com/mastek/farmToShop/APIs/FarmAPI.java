@@ -44,5 +44,10 @@ public interface FarmAPI {
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Farm findByFarmUsernameAndPassword(@PathParam("username") String username, @PathParam("password") String password);
 	
+	@GET
+	@Path("/farm/findu/{username}/{password}")
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	public Farm findByFarUsernameAndPassword(@PathParam("username") String username, @PathParam("password") String password);
+	
 	
 }

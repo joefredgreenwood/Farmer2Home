@@ -289,6 +289,11 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		return bask;
 	}
 
+	public Farm findByFarUsernameAndPassword(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	
 	
