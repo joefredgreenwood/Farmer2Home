@@ -1,5 +1,6 @@
 package com.mastek.farmToShop.services;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -65,6 +66,8 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 	}
 
 	public Product registerNewProduct(Product newProduct) {
+		newProduct.setDate(LocalDate.now());
+		newProduct.setRemainQuantity(newProduct.getProductQuantity());
 		newProduct = prodDAO.save(newProduct);
 		return newProduct;
 	}
@@ -302,6 +305,8 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 	public Product registerNewFarmProducts(Product product, String username, String password) {
 		Farm farm = FarDAO.findByUsernameAndPassword(username, password);		
 		assignProductToFarm(farm.getFarmID(), product.getProductID());
+		product.setDate(LocalDate.now());
+		product.setRemainQuantity(product.getProductQuantity());
 		product = prodDAO.save(product);
 		farm = FarDAO.save(farm);
 		return product;
@@ -350,6 +355,19 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 			
 		}
 		return basket;
+	}
+	@Transactional
+	public AssignedProduct buySomething(AssignedProduct aProd, int productID, int customerID) {
+		Product prod = prodDAO.findById(productID).get();
+		int qty = prod.getProductQuantity();
+		int pur = aProd.getProductQuantity();
+		prod.setRemainQuantity(qty-pur);
+		assigednProductToProduct(aProd.getAssignedProductID(), productID);
+		Customer cus = CusDAO.findById(customerID).get();
+		Basket basket = findBasketByUsernameAndPassword(cus.getCustomerUsername(), cus.getCustomerPassword());
+		assignedProductToBasket(aProd.getAssignedProductID(), basket.getBasketID());
+		
+		return aProd;
 	}
 
 	

@@ -3,6 +3,8 @@ package com.mastek.farmToShop.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+
+import java.time.LocalDate;
 import java.util.HashSet;
 
 import java.util.Set;
@@ -55,6 +57,10 @@ public class Product {
 	@FormParam("productPrice")
 	double productPrice;
 	
+	int remainQuantity;
+	
+	LocalDate date;
+	
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -84,6 +90,23 @@ public class Product {
 		this.productPrice = productPrice;
 	}
 	
+
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+
+	public int getRemainQuantity() {
+		return remainQuantity;
+	}
+
+	public void setRemainQuantity(int remainQuantity) {
+		this.remainQuantity = remainQuantity;
+	}
 	
 	
 	
@@ -91,6 +114,9 @@ public class Product {
 	
 	/////////////////////////////////////// Joins //////////////////////////////////////////////
 	
+
+
+
 	Farm farmProduct;          //SAJS JOIN     (farm-product)   
 						
 
