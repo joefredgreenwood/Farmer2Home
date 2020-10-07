@@ -324,12 +324,17 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		Set<Basket> basks = cust.getCustomersBaskets();
 		for (Basket bask : basks) {
 			try {
-				if(bask.getLinkedTransactions()==null) {
+				if(bask.getLinkedTransactions()!=null) {
+					basket = null;
+					
+				}
+				else {
 					basket = bask;
 					break;
 				}
 			} catch (NullPointerException e) {
-				basket = null;
+				basket = bask;
+				break;
 //				e.printStackTrace();
 			}
 //			else {

@@ -212,7 +212,7 @@ class FarmToShopApplicationTests {
 	
 	@Test
 	void joinTransactionBasket() {
-		farmS.linkTransactionToBasket(74, 73);
+		farmS.linkTransactionToBasket(80, 79);
 	}
 	
 }
