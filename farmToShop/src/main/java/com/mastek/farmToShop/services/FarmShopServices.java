@@ -316,6 +316,37 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		return prod;
 	}
 
+	@Transactional
+	public Basket findBasketByUsernameAndPassword(String username, String password) {
+		Basket basket = null;
+		Customer cust = CusDAO.findByUsernameAndPassword(username, password);
+		System.out.println(cust.getCustomersBaskets().size());
+		Set<Basket> basks = cust.getCustomersBaskets();
+		for (Basket bask : basks) {
+			try {
+				if(bask.getLinkedTransactions()==null) {
+					basket = bask;
+					break;
+				}
+			} catch (NullPointerException e) {
+				basket = null;
+//				e.printStackTrace();
+			}
+//			else {
+//				basket = null;
+//			}
+		}
+		if(basket==null) {
+			Basket baske = new Basket();
+			BasDAO.save(baske);
+			linkBasketToCustomer(baske.getBasketID(), cust.getCustomerID());
+			basket = baske;
+			
+			
+		}
+		return basket;
+	}
+
 	
 
 	

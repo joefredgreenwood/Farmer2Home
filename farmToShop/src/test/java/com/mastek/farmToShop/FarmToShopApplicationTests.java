@@ -198,17 +198,22 @@ class FarmToShopApplicationTests {
 //				}
 	
 	
-	@Test
-	void findProdsByFarmID() {
-		Set<Product> prod = farmS.findProducstByFarmID(71);
-		System.out.println(prod);
-	}
+//	@Test
+//	void findProdsByFarmID() {
+//		Set<Product> prod = farmS.findProducstByFarmID(71);
+//		System.out.println(prod);
+//	}
 	
 //	@Test
 //	void findFarmByID() {
 //		Farm farm = FarDAO.findById(65).get();
 //		System.out.println(farm);
 //	}
+	
+	@Test
+	void joinTransactionBasket() {
+		farmS.linkTransactionToBasket(74, 73);
+	}
 	
 }
 
