@@ -96,6 +96,7 @@ public class Basket {
 
 	@OneToMany (mappedBy="currentBasket", cascade=CascadeType.ALL)
 	@XmlTransient
+	@org.springframework.data.annotation.Transient
 	public Set<AssignedProduct> getBasketProducts() {
 		return basketProducts;
 	}

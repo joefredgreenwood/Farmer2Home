@@ -108,7 +108,7 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		// TODO Auto-generated method stub
 		return FarDAO.findById(farmID).get();
 	}
-
+	@Transactional
 	public Farm registerNewFarm(Farm newFarm) throws NoSuchElementException{
 		if(FarDAO.findByUsername(newFarm.getFarmUsername())!=null) {
 			throw new NoSuchElementException("Username already exists");
@@ -222,7 +222,7 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		Product prod = prodDAO.findById(productID).get();
 		
 		
-		prod.getFarmProduct().add(farm);
+		prod.setFarmProduct(farm);
 		farm.getFarmProduce().add(prod);
 		FarDAO.save(farm);
 		prodDAO.save(prod);
@@ -289,11 +289,34 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		return bask;
 	}
 
-	public Farm findByFarUsernameAndPassword(String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+
+	@Transactional
+	public Iterable<Product> findProductByFarUsernameAndPassword(String username, String password) {
+		Farm farm = FarDAO.findByUsernameAndPassword(username, password);
+		System.out.println(farm.getFarmProduce().size());
+		Iterable<Product> prods = farm.getFarmProduce();
+		return prods;
 	}
 
+	@Transactional
+	public Product registerNewFarmProducts(Product product, String username, String password) {
+		Farm farm = FarDAO.findByUsernameAndPassword(username, password);		
+		assignProductToFarm(farm.getFarmID(), product.getProductID());
+		product = prodDAO.save(product);
+		farm = FarDAO.save(farm);
+		return product;
+	}
+	
+	
+	@Transactional
+	public Set<Product> findProducstByFarmID(int farmID) {
+		Farm farm = FarDAO.findById(farmID).get();
+		System.out.println(farm.getFarmProduce().size());
+		Set<Product> prod = farm.getFarmProduce();
+		return prod;
+	}
+
+	
 
 	
 	

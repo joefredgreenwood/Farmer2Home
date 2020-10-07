@@ -21,6 +21,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -108,13 +109,10 @@ public class Farm {
 	////////////////////////////////////////////////Foreign Keys//////////////////////////////////////////
 
 	
-	Set<Product> farmProduce = new HashSet<Product>();					//Many to many
-	@ManyToMany(cascade=CascadeType.ALL)								// configured many to many associations for the entities
-	@JoinTable(name="Farm_Produce", 									// the join table name
-			   joinColumns= {@JoinColumn(name="fk_farmID")}, 			// foreign key for the current class
-			   inverseJoinColumns = {@JoinColumn(name="fk_productID")})	//foreign key column for the collection	
-//	@Transient
-	@XmlTransient	// this will ignore the association property when shared via service
+	Set<Product> farmProduce = new HashSet<Product>();					
+	
+	@OneToMany(mappedBy="farmProduct", cascade=CascadeType.ALL)
+	@XmlTransient
 	public Set<Product> getFarmProduce() {
 		return farmProduce;
 	}

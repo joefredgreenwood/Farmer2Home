@@ -91,20 +91,23 @@ public class Product {
 	
 	/////////////////////////////////////// Joins //////////////////////////////////////////////
 	
-	Set<Farm> farmProduct = new HashSet<Farm>();          //SAJS JOIN     (farm-product)   
-	
-	@ManyToMany (mappedBy="farmProduce")
-	@XmlTransient
-	public Set<Farm> getFarmProduct() {
-		return farmProduct;
-	}
-	public void setFarmProduct(Set<Farm> farmProduct) {
-		this.farmProduct = farmProduct;										
-	}																	
+	Farm farmProduct;          //SAJS JOIN     (farm-product)   
+						
 
 	
 	
-	
+	@ManyToOne
+	@JoinColumn(name="fk_FarmID")
+	@XmlTransient
+	public Farm getFarmProduct() {
+		return farmProduct;
+	}
+
+	public void setFarmProduct(Farm farmProduct) {
+		this.farmProduct = farmProduct;
+	}
+
+
 	Set<AssignedProduct> assignedProducts = new HashSet<AssignedProduct>();							//SAJS join one to many (assigned prod-prod)
 
 	@OneToMany (mappedBy="currentProduct", cascade=CascadeType.ALL)
