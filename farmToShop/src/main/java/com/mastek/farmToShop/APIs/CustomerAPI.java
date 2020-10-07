@@ -10,6 +10,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.mastek.farmToShop.entities.Basket;
 import com.mastek.farmToShop.entities.Customer;
 
 
@@ -47,6 +48,11 @@ public interface CustomerAPI {
 	@Path("/customer/delete/{customerID}")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Customer deleteCustomer(@PathParam("customerID") int customerID);
+	
+	@GET
+	@Path("/customer/basket/findu/{username}/{password}")
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	public Basket findBasketByUsernameAndPassword(@PathParam("username") String username, @PathParam("password") String password);
 	
 }
 
