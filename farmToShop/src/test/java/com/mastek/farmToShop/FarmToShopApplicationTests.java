@@ -173,11 +173,8 @@ class FarmToShopApplicationTests {
 
 	
 	////////////////////////////////////////////////Joins////////////////////////////////////////////////
-//	@Test
-//	void assignProductToFarm() {
-//		farmS.assignProductToFarm(71, 70);
-//		
-//	}
+	
+	//// Farm Test Cases ////
 	
 //	@Test
 //	void findProductByFarm() {
@@ -210,10 +207,34 @@ class FarmToShopApplicationTests {
 //		System.out.println(farm);
 //	}
 	
-	@Test
+//	@Test
+//	void assignProductToFarm() {
+//		farmS.assignProductToFarm(71, 70);
+//		
+//	}
+	
+	//// ASSOCIATIONS /////
+	
+	/*@Test
 	void joinTransactionBasket() {
 		farmS.linkTransactionToBasket(80, 79);
-	}
+	}*/
+	
+	/*@Test
+	void assignAssignedProductToProduct() {
+		farmS.assigednProductToProduct(42, 41);
+	}*/
+	
+	/*@Test
+	void assignAssignedProductToBasket() {
+		farmS.assignedProductToBasket(42, 40);
+	}*/
+	
+	/*@Test
+	void assignBasketToCustomer() {
+		farmS.linkBasketToCustomer(40, 37);
+	}*/
+	
 	
 }
 
