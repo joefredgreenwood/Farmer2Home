@@ -3,6 +3,7 @@ package com.mastek.farmToShop.APIs;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -13,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import com.mastek.farmToShop.entities.AssignedProduct;
 import com.mastek.farmToShop.entities.Basket;
 import com.mastek.farmToShop.entities.Customer;
+
 
 
 
@@ -27,29 +29,47 @@ public interface CustomerAPI {
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Iterable<Customer> listAllCustomers();
 	
+	//http://localhost:7777/farmtoshop/customer/find
 	@GET
 	@Path("/customer/find/{customerID}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Customer findByCustomerid(@PathParam("customerID") int customerID);
 	
-	
+	//http://localhost:7777/farmtoshop/customer/register
 	@POST
 	@Path("/customer/register")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces({MediaType.APPLICATION_JSON})
 	public Customer registerNewCustomer(@BeanParam Customer newCustomer);
 	
-	
+	//http://localhost:7777/farmtoshop/customer/findu
 	@GET
 	@Path("/customer/findu/{username}/{password}")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Customer findByUsernameAndPassword(@PathParam("username") String username, @PathParam("password") String password);
 	
+	//http://localhost:7777/farmtoshop/customer/delete
 	@DELETE
 	@Path("/customer/delete/{customerID}")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Customer deleteCustomer(@PathParam("customerID") int customerID);
 	
+	//http://localhost:7777/farmtoshop/customer/update
+	@POST 														
+	@Path("/customer/update/{customerID}")									 
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)				 
+	@Produces(MediaType.APPLICATION_JSON)							 
+	public Customer updateCustomer(
+			@FormParam("customerID") int customerID,
+			@FormParam("customerForename")String customerForename,
+			@FormParam("customerSurname")String customerSurname,
+			@FormParam("customerAddress") String customerAddress,
+			@FormParam("customerDOB")String customerDOB,
+			@FormParam("customerEmail")String customerEmail,
+			@FormParam("customerUsername")String customerUsername,
+			@FormParam("customerPassword")String customerPassword);
+	
+	//http://localhost:7777/farmtoshop/customer/basket/findu
 	@GET
 	@Path("/customer/basket/findu/{username}/{password}")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})

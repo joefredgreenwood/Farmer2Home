@@ -12,7 +12,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-
+import com.mastek.farmToShop.entities.Customer;
 import com.mastek.farmToShop.entities.Farm;
 import com.mastek.farmToShop.entities.FarmLocation;
 import com.mastek.farmToShop.entities.Product;
@@ -66,4 +66,16 @@ public interface FarmAPI {
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Set<Product> findProducstByFarmID(@PathParam("farmID") int farmID);
 	
-}
+	//http://localhost:7777/farmtoshop/farm/update
+		@POST 														
+		@Path("/customer/update/{farmID}")									 
+		@Consumes(MediaType.APPLICATION_FORM_URLENCODED)				 
+		@Produces(MediaType.APPLICATION_JSON)							 
+		public Customer updateFarm(
+				@FormParam("farmID") int farmID,
+				@FormParam("farmName") String farmName,
+				@FormParam("farmLocation")String farmLocation,
+				@FormParam("farmType") String farmType,
+				@FormParam("farmUsername") String farmUsername,
+				@FormParam("farmPassword") String farmPassword);
+		}
