@@ -81,6 +81,15 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		return prods;
 		
 	}
+	
+	public Product deleteProduct(int productID) {
+		
+		Product prod = prodDAO.findById(productID).get();
+		prodDAO.deleteById(productID);
+		return prod;
+		
+		
+	}
 
 	///////////////////////////////////// Transaction API ////////////////////////////////////////////////////
 	
@@ -161,6 +170,15 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		return newCustomer;}
 	}
 	
+    public Customer deleteCustomer(int customerID) {
+		
+		Customer cus = CusDAO.findById(customerID).get();
+		CusDAO.deleteById(customerID);
+		return cus;
+		
+		
+	}
+	
 	public Customer findByUsernameAndPassword(String username, String password) throws IllegalArgumentException{
 		
 			Customer cus = CusDAO.findByUsernameAndPassword(username, password);
@@ -193,22 +211,14 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		return newBasket;
 	}
 
-	public Customer deleteCustomer(int customerID) {
+	public Basket deleteBasket(int basketID) {
 		
-		Customer cus = CusDAO.findById(customerID).get();
-		CusDAO.deleteById(customerID);
-		return cus;
+		Basket bas = BasDAO.findById(basketID).get();
+		CusDAO.deleteById(basketID);
+		return bas;
 		
 		
 	}
-
-	
-	
-	
-	
-
-
-
 	
 //	@Transactional
 //	public Basket customerBuysProduct(int custID) {
@@ -369,13 +379,11 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		
 		return aProd;
 	}
-
 	
-
+	/*@Transactional
+	public Basket removeProductFromBasket(Basket aProd, int productID, int basketID) {
+		
+		return null;
+	*/	
+	}
 	
-	
-	
-	
-
-	
-}

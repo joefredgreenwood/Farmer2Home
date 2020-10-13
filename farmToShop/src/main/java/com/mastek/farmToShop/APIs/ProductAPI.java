@@ -2,6 +2,7 @@ package com.mastek.farmToShop.APIs;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -9,7 +10,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-
+import com.mastek.farmToShop.entities.Basket;
 import com.mastek.farmToShop.entities.Product;
 
 @Path("/farmtoshop/")
@@ -33,6 +34,15 @@ public interface ProductAPI {
 		@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 		@Produces({MediaType.APPLICATION_JSON})
 		public Product registerNewProduct(@BeanParam Product newProduct);
+		
+		
+		// http://localhost:7777/farmtoshop/Product/delete
+		@DELETE
+		@Path("/product/delete/{productID}")
+		@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+		public Product deleteProduct(@PathParam("productID") int productID);
+		
+		
 
 	}
 

@@ -30,20 +30,14 @@ public class Basket {
 	public Basket() {
 
 	}
-	
-
 
 	@FormParam("basketID")
 	int basketID;
 	
 	@FormParam("basketValue")
 	double basketValue;
-
 	
-	
-	
-	
-	@Id
+	@Id//Marking the property as primary Key for the table
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getBasketID() {
 		return basketID;
