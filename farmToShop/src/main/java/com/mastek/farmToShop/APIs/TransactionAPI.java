@@ -34,15 +34,18 @@ public interface TransactionAPI {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Transaction registerNewTransaction(@BeanParam Transaction newTransaction);
 	
-	//http://localhost:7777/farmtoshop/transaction/update
+			/*
+			//http://localhost:7777/farmtoshop/transaction/update
 			@POST 														
-			@Path("/product/update/{transactionID}")									 
+			@Path("/transaction/update/{transactionID}")									 
 			@Consumes(MediaType.APPLICATION_FORM_URLENCODED)				 
 			@Produces(MediaType.APPLICATION_JSON)							 
 			public Product updateTransaction(
 					@FormParam("transactionID") int transactionID,
 					@FormParam("transactionDate") String transactionDate,
-					@FormParam("productQuantity") double transactionValue);
+					@FormParam("transactionValue") double transactionValue);
+				*/
+					
 					}
 
 

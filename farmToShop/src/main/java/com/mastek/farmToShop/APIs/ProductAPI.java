@@ -44,7 +44,7 @@ public interface ProductAPI {
 		@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 		public Product deleteProduct(@PathParam("productID") int productID);
 		
-		//http://localhost:7777/farmtoshop/product/update
+		/*//http://localhost:7777/farmtoshop/product/update
 		@POST 														
 		@Path("/product/update/{productID}")									 
 		@Consumes(MediaType.APPLICATION_FORM_URLENCODED)				 
@@ -54,4 +54,6 @@ public interface ProductAPI {
 				@FormParam("productName")String productName,
 				@FormParam("productQuantity")int productQuantity,
 				@FormParam("productPrice") String productPric);
+		*/
 				}
+		

@@ -385,5 +385,70 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		
 		return null;
 	*/	
+	
+	
+	/////////////////////////////UPDATES/////////////////////////////////
+
+	/*public Transaction updateTransaction(int transactionID, String transactionDate, double transactionValue) {
+		Transaction tran = TranDAO.findById(transactionID).get();
+		tran.setTransactionID(transactionID);
+		tran.setTransactionDate(transactionDate);
+		tran.setTransactionValue(transactionValue);
+		TranDAO.save(tran);
+		return tran;
+	}*/
+
+	/*public Farm updateFarm(int farmID, String farmName, String farmLocation, String farmType, String farmUsername,
+			String farmPassword) {
+	Farm far = FarDAO.findById(farmID).get();
+	far.setFarmLocation(farmLocation);
+	far.setFarmName(farmName);
+	far.setFarmPassword(farmPassword);
+	far.setFarmType(farmType);
+	far.setFarmUsername(farmUsername);
+	FarDAO.save(far);
+	return far;
+	
+		return null;
+	}*/
+
+	public Customer updateCustomer(int customerID, String customerForename, String customerSurname,
+			String customerAddress, String customerDOB, String customerEmail, String customerUsername,
+			String customerPassword) {
+	Customer cus = CusDAO.findById(customerID).get();
+	cus.setCustomerAddress(customerAddress);
+	cus.setCustomerSurname(customerSurname);
+	cus.setCustomerForename(customerForename);
+	cus.setCustomerDOB(customerDOB);
+	cus.setCustomerPassword(customerPassword);
+	cus.setCustomerEmail(customerEmail);
+	cus.setCustomerUsername(customerUsername);
+	CusDAO.save(cus);
+	return cus;
+	
 	}
+
+	public Basket updateBasket(int basketID, double basketValue) {
+	Basket bas = BasDAO.findById(basketID).get();
+	bas.setBasketValue(basketValue);
+	BasDAO.save(bas);
+	
+	return bas;
+	
+	}
+
+	public Product updateProduct(int productID, String productName, int productQuantity, double productPrice) {
+	Product prod = prodDAO.findById(productID).get();
+	prod.setProductName(productName);
+	prod.setProductPrice(productPrice);
+	prod.setProductQuantity(productQuantity);
+	prodDAO.save(prod);
+	
+	return prod;
+	
+	}
+}
+
+	
+	
 	
