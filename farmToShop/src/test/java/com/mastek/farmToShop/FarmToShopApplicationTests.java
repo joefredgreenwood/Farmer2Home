@@ -210,10 +210,32 @@ class FarmToShopApplicationTests {
 //		System.out.println(farm);
 //	}
 	
+//	@Test
+//	void joinTransactionBasket() {
+//		farmS.linkTransactionToBasket(80, 79);
+//	}
+//	
+	
+//	@Test
+//	void findProdByFarmL() {
+//		Set<Product> prods = farmS.findProducstByFarmLocation(FarmLocation.WALES);
+//		for (Product product : prods) {
+//			System.out.println(product);
+//			
+//		}
+//	}
+	
+//	@Test
+//	void joinProdAprod() {
+//		farmS.assigednProductToProduct(6, 95);
+//	}
+	
+	
 	@Test
-	void joinTransactionBasket() {
-		farmS.linkTransactionToBasket(80, 79);
+	void joinAprodBasket() {
+		farmS.assignedProductToBasket(6, 82);
 	}
+	
 	
 }
 

@@ -72,7 +72,6 @@ public class AssignedProduct {
 	@ManyToOne
 	@JoinColumn(name="fk_ProductID")
 //	@Transient
-	@XmlTransient
 	public Product getCurrentProduct() {
 		return currentProduct;
 	}

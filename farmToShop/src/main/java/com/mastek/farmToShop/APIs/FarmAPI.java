@@ -53,17 +53,28 @@ public interface FarmAPI {
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Iterable<Product> findProductByFarUsernameAndPassword(@PathParam("username") String username, @PathParam("password") String password);
 	
+//	@POST
+//	@Path("/farm/product/register")
+//	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+//	@Produces({MediaType.APPLICATION_JSON})
+//	public Product registerNewFarmProducts(@FormParam("username") String username, @FormParam("password") String password, @BeanParam Product product
+//			);
+	
 	@POST
 	@Path("/farm/product/register")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces({MediaType.APPLICATION_JSON})
-	public Product registerNewFarmProducts(@BeanParam Product product,
-			@FormParam("username") String username, @FormParam("password") String password);
-	
+	public Product registerNewFarmProducts(@FormParam("farmID") int farmID, @BeanParam Product product
+			);
 
-	@GET
-	@Path("/farm/product/findP/{farmID}")
+	@POST
+	@Path("/farm/product/findID")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public Set<Product> findProducstByFarmID(@PathParam("farmID") int farmID);
+	public Set<Product> findProducstByFarmID(@FormParam("farmID") int farmID);
+	
+	@POST
+	@Path("/farm/product/findlocation")
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	public Set<Product> findProducstByFarmLocation(@FormParam("farmLocation") FarmLocation farmLocation);
 	
 }

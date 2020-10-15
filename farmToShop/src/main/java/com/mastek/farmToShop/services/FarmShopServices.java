@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.transaction.Transactional;
@@ -55,9 +56,15 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 	
 	///////////////////////////////////// Product API /////////////////////////////////////////////////
 
-	public Iterable<Product> listAllProducts() {
-		// TODO Auto-generated method stub
-		return prodDAO.findAll();
+	public Set<Product> listAllProducts() {
+		Iterable<Product> prods = prodDAO.findAll();
+		Set<Product> prods1 = new HashSet<Product>();
+		for (Product product : prods) {
+			if(product.getRemainQuantity()>0) {
+				prods1.add(product);
+			}
+		}
+		return prods1;
 	}
 
 	public Product findByProductid(int productID) {
@@ -302,13 +309,20 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 	}
 
 	@Transactional
-	public Product registerNewFarmProducts(Product product, String username, String password) {
-		Farm farm = FarDAO.findByUsernameAndPassword(username, password);		
-		assignProductToFarm(farm.getFarmID(), product.getProductID());
-		product.setDate(LocalDate.now());
-		product.setRemainQuantity(product.getProductQuantity());
-		product = prodDAO.save(product);
-		farm = FarDAO.save(farm);
+	public Product registerNewFarmProducts(String username, String password, Product product) {
+		try {
+			Farm farm = FarDAO.findByUsernameAndPassword(username, password);
+			System.out.println(farm);
+			product.setDate(LocalDate.now());
+			product.setRemainQuantity(product.getProductQuantity());
+			product = prodDAO.save(product);
+			System.out.println(product.getProductID());
+			assignProductToFarm(farm.getFarmID(), product.getProductID());
+//		farm = FarDAO.save(farm);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return product;
 	}
 	
@@ -340,11 +354,8 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 			} catch (NullPointerException e) {
 				basket = bask;
 				break;
-//				e.printStackTrace();
 			}
-//			else {
-//				basket = null;
-//			}
+
 		}
 		if(basket==null) {
 			Basket baske = new Basket();
@@ -354,20 +365,83 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 			
 			
 		}
+		System.out.println(basket);
 		return basket;
 	}
 	@Transactional
-	public AssignedProduct buySomething(AssignedProduct aProd, int productID, int customerID) {
+	public AssignedProduct buySomething(int aProdQuantity, int productID, int customerID) {
+		System.out.println("aProdQuant - "+aProdQuantity);
+		System.out.println("prodID - "+productID);
+		System.out.println("custID - "+customerID);
+//		System.out.println(productID);
 		Product prod = prodDAO.findById(productID).get();
-		int qty = prod.getProductQuantity();
-		int pur = aProd.getProductQuantity();
+		AssignedProduct aProd = new AssignedProduct();
+		int qty = prod.getRemainQuantity();
+		int pur = aProdQuantity;
+		aProd.setProductQuantity(aProdQuantity);
+		AsspDAO.save(aProd);
 		prod.setRemainQuantity(qty-pur);
+		prodDAO.save(prod);
 		assigednProductToProduct(aProd.getAssignedProductID(), productID);
 		Customer cus = CusDAO.findById(customerID).get();
 		Basket basket = findBasketByUsernameAndPassword(cus.getCustomerUsername(), cus.getCustomerPassword());
+		double basketValue = aProd.getProductQuantity()*prod.getProductPrice();
+		basket.setBasketValue(basket.getBasketValue()+basketValue);
+		BasDAO.save(basket);
 		assignedProductToBasket(aProd.getAssignedProductID(), basket.getBasketID());
 		
 		return aProd;
+	}
+
+	
+	@Transactional
+	public Product registerNewFarmProducts(int farmID, Product product) {
+		try {
+			Farm farm = FarDAO.findById(farmID).get();
+			System.out.println(farm.getFarmID());
+			product.setDate(LocalDate.now());
+			product.setRemainQuantity(product.getProductQuantity());
+			product = prodDAO.save(product);
+			System.out.println(product.getProductID());
+			assignProductToFarm(farm.getFarmID(), product.getProductID());
+//		farm = FarDAO.save(farm);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return product;
+	}
+	@Transactional
+	public Set<Product> findProducstByFarmLocation(FarmLocation farmLocation) {
+		Set<Product> prods = new HashSet<Product>();
+		Iterable<Farm> farms = FarDAO.findByFarmLocation(farmLocation);
+		for (Farm farm : farms) {
+			System.out.println(farm.getFarmProduce().size());
+			Set<Product> prods1 = farm.getFarmProduce();
+			for (Product prod : prods1) {
+				if(prod.getRemainQuantity()>0) {
+					prods.add(prod);
+				}
+			}
+//			prods.addAll(farm.getFarmProduce());
+		}
+		return prods;
+	}
+	
+	@Transactional
+	public Set<AssignedProduct> showProducts(int basketID) {
+		Basket bask = BasDAO.findById(basketID).get();
+		System.out.println(bask.getBasketProducts().size());
+		Set<AssignedProduct> aprods = bask.getBasketProducts();
+		
+		
+		return aprods;
+	}
+
+	public Product showProds(int assignedProductID) {
+		AssignedProduct aprod = AsspDAO.findById(assignedProductID).get();
+		Product prod = aprod.getCurrentProduct();
+		return prod;
 	}
 
 	

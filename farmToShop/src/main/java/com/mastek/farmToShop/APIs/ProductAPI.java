@@ -1,5 +1,7 @@
 package com.mastek.farmToShop.APIs;
 
+import java.util.Set;
+
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -20,7 +22,7 @@ public interface ProductAPI {
 		@GET
 		@Path("/product/list")
 		@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-		public Iterable<Product> listAllProducts();
+		public Set<Product> listAllProducts();
 
 		@GET
 		@Path("/product/find/{productID}")
