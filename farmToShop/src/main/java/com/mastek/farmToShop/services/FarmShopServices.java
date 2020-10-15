@@ -7,6 +7,8 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 import javax.transaction.Transactional;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -46,6 +48,7 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 	CustomerDAO CusDAO;
 	
 	@Autowired
+	static
 	FarmDAO FarDAO;
 	
 	@Autowired
@@ -219,6 +222,16 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		
 		
 	}
+	
+	public Farm deleteFarm(@PathParam("farmId") int farmId) {
+		
+		Farm far= FarDAO.findById(farmId).get();
+		FarDAO.deleteById(farmId);
+		return far;
+	}
+	
+	
+	
 	
 //	@Transactional
 //	public Basket customerBuysProduct(int custID) {

@@ -1,6 +1,8 @@
 package com.mastek.farmToShop;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.Set;
 
@@ -151,6 +153,8 @@ class FarmToShopApplicationTests {
 		
 	}
 	
+	
+	
 
 //	@Test
 //	void addAssignedProduct() {
@@ -170,6 +174,13 @@ class FarmToShopApplicationTests {
 		System.out.println(aprod);
 	}
 */
+	
+//	@Test
+//	public void deleteFarmTest() {
+//		int farmId = 11;
+//		FarmShopServices.deleteFarm(farmId);
+//		assertNull(FarmShopServices.findByFarmid(farmId));
+//		}
 
 	
 	////////////////////////////////////////////////Joins////////////////////////////////////////////////
