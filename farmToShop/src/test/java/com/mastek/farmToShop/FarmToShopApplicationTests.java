@@ -1,6 +1,8 @@
 package com.mastek.farmToShop;
 
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.Set;
 
@@ -151,6 +153,8 @@ class FarmToShopApplicationTests {
 		
 	}
 	
+	
+	
 
 //	@Test
 //	void addAssignedProduct() {
@@ -170,14 +174,18 @@ class FarmToShopApplicationTests {
 		System.out.println(aprod);
 	}
 */
+	
+//	@Test
+//	public void deleteFarmTest() {
+//		int farmId = 11;
+//		FarmShopServices.deleteFarm(farmId);
+//		assertNull(FarmShopServices.findByFarmid(farmId));
+//		}
 
 	
 	////////////////////////////////////////////////Joins////////////////////////////////////////////////
-//	@Test
-//	void assignProductToFarm() {
-//		farmS.assignProductToFarm(71, 70);
-//		
-//	}
+	
+	//// Farm Test Cases ////
 	
 //	@Test
 //	void findProductByFarm() {
@@ -211,6 +219,7 @@ class FarmToShopApplicationTests {
 //	}
 	
 //	@Test
+
 //	void joinTransactionBasket() {
 //		farmS.linkTransactionToBasket(80, 79);
 //	}
@@ -231,10 +240,38 @@ class FarmToShopApplicationTests {
 //	}
 	
 	
-	@Test
-	void joinAprodBasket() {
-		farmS.assignedProductToBasket(6, 82);
-	}
+//	@Test
+//	void joinAprodBasket() {
+//		farmS.assignedProductToBasket(6, 82);
+//	}
+//	void assignProductToFarm() {
+//		farmS.assignProductToFarm(71, 70);
+//		
+//	}
+	
+	//// ASSOCIATIONS /////
+	
+	/*@Test
+	void joinTransactionBasket() {
+		farmS.linkTransactionToBasket(80, 79);
+	}*/
+	
+	/*@Test
+	void assignAssignedProductToProduct() {
+		farmS.assigednProductToProduct(42, 41);
+	}*/
+	
+	/*@Test
+	void assignAssignedProductToBasket() {
+		farmS.assignedProductToBasket(42, 40);
+	}*/
+	
+	/*@Test
+	void assignBasketToCustomer() {
+		farmS.linkBasketToCustomer(40, 37);
+	}*/
+	
+
 	
 	
 }
