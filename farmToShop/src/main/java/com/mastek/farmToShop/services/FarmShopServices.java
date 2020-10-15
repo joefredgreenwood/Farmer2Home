@@ -444,6 +444,7 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 		return prod;
 	}
 
+	@Transactional
 	public AssignedProduct deleteProduct(int assignedProductID) {
 		AssignedProduct aprod = AsspDAO.findById(assignedProductID).get();
 		Product prod = aprod.getCurrentProduct();
