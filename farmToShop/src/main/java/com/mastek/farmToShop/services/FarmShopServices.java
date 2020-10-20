@@ -447,8 +447,11 @@ public class FarmShopServices implements ProductAPI, BasketAPI, CustomerAPI, Far
 	@Transactional
 	public AssignedProduct deleteProduct(int assignedProductID) {
 		AssignedProduct aprod = AsspDAO.findById(assignedProductID).get();
+		Basket bask = aprod.getCurrentBasket();
 		Product prod = aprod.getCurrentProduct();
+		bask.setBasketValue(bask.getBasketValue()+(prod.getProductPrice()*aprod.getProductQuantity()));
 		prod.setRemainQuantity(prod.getRemainQuantity()+aprod.getProductQuantity());
+		BasDAO.save(bask);
 		prodDAO.save(prod);
 		AsspDAO.deleteById(assignedProductID);
 		return aprod;
